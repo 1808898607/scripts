@@ -33,8 +33,8 @@ let exchangeName = $.isNode() ? (process.env.EXCHANGE_EC ? process.env.EXCHANGE_
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '', message;
 let inviteCodes = [
-  '2599703@2757654@2586018@1556311@2583822@2585256',
-  '2599703@2757654@2586018@1556311@2583822@2585256',
+  '3050745@4008903@4008932@4008957@4008985@3994997',
+  '3050745@4008903@4008932@4008957@4008985@3994997',
 ]
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
