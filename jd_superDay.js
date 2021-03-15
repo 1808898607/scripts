@@ -31,7 +31,7 @@ const $ = new Env('超级品类日');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 let cookiesArr = [], cookie = '', originCookie = '', message = '';
-let helpAuthor = true;//为作者助力的开关
+let helpAuthor = flase;//为作者助力的开关
 const ACT_ID = 'c8d69c6a780a11ebb588fa163e8623a7';
 if ($.isNode()) {
     Object.keys(jdCookieNode).forEach((item) => {
