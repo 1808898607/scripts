@@ -23,7 +23,7 @@ const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 const path = $.isNode() ? require('path') : '';
 let cookiesArr = [], cookie = '', message = '';
-let helpAuthor = flase;//为作者助力的开关
+let helpAuthor = false;//为作者助力的开关
 const ACT_API = 'https://sendbeans.jd.com/jump/';
 if ($.isNode()) {
     Object.keys(jdCookieNode).forEach((item) => {
