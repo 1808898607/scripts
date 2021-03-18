@@ -31,7 +31,7 @@ const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 const path = $.isNode() ? require('path') : '';
 let cookiesArr = [], cookie = '', originCookie = '', newCookie = '', message = '';
-let helpAuthor = true;//为作者助力的开关
+let helpAuthor = false;//为作者助力的开关
 
 if ($.isNode()) {
     Object.keys(jdCookieNode).forEach((item) => {
