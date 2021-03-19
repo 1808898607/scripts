@@ -29,7 +29,7 @@ const $ = new Env('百变大咖秀');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 let cookiesArr = [], cookie = '', originCookie = '', message = '';
-let helpAuthor = true; //为作者助力的开关
+let helpAuthor = false; //为作者助力的开关
 const ACT_ID = 'dz2102100001340207';
 const questionList = [
   { q: '0c32c1c0e2284331beec6910dc07a948', a: 'A:杨钰莹' },
