@@ -39,9 +39,9 @@ const $ = new Env('京喜工厂');
 const JD_API_HOST = 'https://m.jingxi.com';
 const helpAu = false; //帮作者助力 免费拿活动
 const notify = $.isNode() ? require('./sendNotify') : '';
-let jdNotify = false;//是否关闭通知，false打开通知推送，true关闭通知推送
+let jdNotify = true;//是否关闭通知，false打开通知推送，true关闭通知推送
 const randomCount = $.isNode() ? 20 : 5;
-let tuanActiveId = `P529ps29ruxRs8jpkoxrQg==`;
+let tuanActiveId = `6S9y4sJUfA2vPQP6TLdVIQ==`;
 const jxOpenUrl = `openjd://virtual?params=%7B%20%22category%22:%20%22jump%22,%20%22des%22:%20%22m%22,%20%22url%22:%20%22https://wqsd.jd.com/pingou/dream_factory/index.html%22%20%7D`;
 let cookiesArr = [], cookie = '', message = '', allMessage = '';
 const inviteCodes = [
@@ -52,7 +52,6 @@ const inviteCodes = [
   'cR6akRvMKEZDQo6d_N7boA==@wotQXakCeOom5OFicq29hw==@2G935SZ1n3J2-57oYsnjow==@Aor7O2L5WyXS4_oQTOdd5A==',
   'cR6akRvMKEZDQo6d_N7boA==@wotQXakCeOom5OFicq29hw==@2G935SZ1n3J2-57oYsnjow==@Aor7O2L5WyXS4_oQTOdd5A==',
   'cR6akRvMKEZDQo6d_N7boA==@wotQXakCeOom5OFicq29hw==@2G935SZ1n3J2-57oYsnjow==@Aor7O2L5WyXS4_oQTOdd5A==',
-  'cR6akRvMKEZDQo6d_N7boA==@wotQXakCeOom5OFicq29hw==@2G935SZ1n3J2-57oYsnjow==@Aor7O2L5WyXS4_oQTOdd5A=='
 ];
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 $.tuanIds = [];
