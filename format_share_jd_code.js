@@ -37,7 +37,7 @@ if (!$.isNode()) {
     fsjd_notify_control = false;
   }
 
-  let filePath = path.resolve(__dirname, "../log/export_sharecodes");
+  let filePath = path.resolve(__dirname, "../logs/sharecodeCollection.log");
   let readDir = fs.readdirSync(filePath).reverse();
   let fileName;
 
