@@ -22,7 +22,7 @@
  echo "23 * * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_axc.js >> /scripts/logs/jd_axc.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "9 9,12,18 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jx_nc.js >> /scripts/logs/jx_nc.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "11 12 17-30 3 * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_oneplus.js >> /scripts/logs/jd_oneplus.log 2>&1" >> /scripts/docker/merged_list_file.sh
- echo "5 8,14,20 17-25 3 * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_mother_jump.js >> /scripts/logs/jd_mother_jump.log 2>&1" >> /scripts/docker/merged_list_file.sh
+ echo "3 7,13,20 25-31 3 * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_mother_jump.js >> /scripts/logs/jd_mother_jump.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "6 0,15 15-29 3 * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_lenovo.js >> /scripts/logs/jd_lenovo.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "5 10,15 13-20 3 * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_wish.js >> /scripts/logs/jd_wish.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "3 10 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_xmf.js >> /scripts/logs/jd_xmf.log 2>&1" >> /scripts/docker/merged_list_file.sh
