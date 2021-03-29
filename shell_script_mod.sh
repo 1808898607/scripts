@@ -3,6 +3,7 @@
   if [ ! -d "/acoolbook/" ]; then
      echo "未检查到acoolbook仓库脚本，初始化下载相关脚本"
      git clone https://github.com/acoolbook/scripts.git /acoolbook
+     wget https://github.com/hajiuhajiu/jdsign1112/blob/master/jd_dpqd.js /acoolbook
  else
      echo "更新acoolbook脚本相关文件"
      git -C /acoolbook reset --hard
