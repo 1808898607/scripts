@@ -3,7 +3,7 @@
   if [ ! -d "/acoolbook/" ]; then
      echo "未检查到acoolbook仓库脚本，初始化下载相关脚本"
      git clone https://github.com/acoolbook/scripts.git /acoolbook
-     wget https://github.com/hajiuhajiu/jdsign1112/blob/master/jd_dpqd.js /acoolbook
+     git clone https://github.com/hajiuhajiu/jdsign1112.git /qd
  else
      echo "更新acoolbook脚本相关文件"
      git -C /acoolbook reset --hard
@@ -11,6 +11,7 @@
  fi
  ## 拷贝脚本到/scripts/目录下，免得安装依赖
  cp /acoolbook/*.js /scripts/
+ cp /qd/jd_dpqd.js /scripts/
 
 # #自定义增加crontab任务
  echo "7 * * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_df.js >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
