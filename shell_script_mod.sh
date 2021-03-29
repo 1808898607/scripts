@@ -8,6 +8,8 @@
      echo "更新acoolbook脚本相关文件"
      git -C /acoolbook reset --hard
      git -C /acoolbook pull --rebase
+     git -C /qd reset --hard
+     git -C /qd pull --rebase
  fi
  ## 拷贝脚本到/scripts/目录下，免得安装依赖
  cp /acoolbook/*.js /scripts/
@@ -36,7 +38,7 @@
  echo "56 9 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_entertainment.js >> /scripts/logs/jd_entertainment.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "3 7,20 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_shake.js >> /scripts/logs/jd_shake.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "4 0,18 24-26 3 * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_sister.js >> /scripts/logs/jd_sister.log 2>&1" >> /scripts/docker/merged_list_file.sh
- echo "3 0 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_dpqd.js >> /scripts/logs/jd_dpqd.log 2>&1" >> /scripts/docker/merged_list_file.sh
+ echo "10 0 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_dpqd.js >> /scripts/logs/jd_dpqd.log 2>&1" >> /scripts/docker/merged_list_file.sh
  #echo "7 * * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_df.js >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
  #echo "7 * * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_df.js >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
  
