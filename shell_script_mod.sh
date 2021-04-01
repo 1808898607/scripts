@@ -12,7 +12,7 @@
  cp /acoolbook/*.js /scripts/
 
 # #自定义增加crontab任务
- echo "7 * * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_df.js >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
+ echo "9 * * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_df.js >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "2 20 23-25 3 * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_grassy.js >> /scripts/logs/jd_grassy.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "0 0,13 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_paopao.js >> /scripts/logs/jd_paopao.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "1 0,13 19-24 3 * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_city_cash.js >> /scripts/logs/jd_city_cash.log 2>&1" >> /scripts/docker/merged_list_file.sh
@@ -20,7 +20,6 @@
  echo "2 0 * 3 *  sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_mgold.js >> /scripts/logs/jd_mgold.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "2 10,20 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jx_products_detail.js >> /scripts/logs/jx_products_detail.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "23 * * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_axc.js >> /scripts/logs/jd_axc.log 2>&1" >> /scripts/docker/merged_list_file.sh
- #echo "9 9,12,18 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jx_nc.js >> /scripts/logs/jx_nc.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "11 12 17-30 3 * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_oneplus.js >> /scripts/logs/jd_oneplus.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "3 7,13,20 25-31 3 * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_mother_jump.js >> /scripts/logs/jd_mother_jump.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "6 0,15 15-29 3 * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_lenovo.js >> /scripts/logs/jd_lenovo.log 2>&1" >> /scripts/docker/merged_list_file.sh
@@ -40,7 +39,7 @@
  echo "8 0,8,19 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_shop_follow_sku.js >> /scripts/logs/jd_shop_follow_sku.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "2 8 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_unsubscribes.js >> /scripts/logs/jd_unsubscribes.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "2 0 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_inter_shop_sign.js >> /scripts/logs/jd_inter_shop_sign.log 2>&1" >> /scripts/docker/merged_list_file.sh
- echo "0 0,13 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_sjkhc.js >> /scripts/logs/jd_sjkhc.log 2>&1" >> /scripts/docker/merged_list_file.sh
+ echo "0 0,8,13,21 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_sjkhc.js >> /scripts/logs/jd_sjkhc.log 2>&1" >> /scripts/docker/merged_list_file.sh
  #echo "7 * * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_df.js >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
  #echo "7 * * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_df.js >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
  #echo "7 * * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_df.js >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
