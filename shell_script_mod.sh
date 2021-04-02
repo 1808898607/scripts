@@ -12,7 +12,7 @@
  cp /acoolbook/*.js /scripts/
 
 # #自定义增加crontab任务
- echo "9 * * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_df.js >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
+ echo "20 * * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_df.js >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "2 20 23-25 3 * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_grassy.js >> /scripts/logs/jd_grassy.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "0 0,13 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_paopao.js >> /scripts/logs/jd_paopao.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "1 0,13 19-24 3 * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_city_cash.js >> /scripts/logs/jd_city_cash.log 2>&1" >> /scripts/docker/merged_list_file.sh
