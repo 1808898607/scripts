@@ -27,7 +27,7 @@ cron "3 0,10,23 * * *" script-path=https://raw.githubusercontent.com/monk-coder/
 */
 const $ = new Env('店铺大转盘');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
-const notify = $.isNode() ? require('./sendNotifyfk') : '';
+const notify = $.isNode() ? require('./sendNotify') : '';
 const cp = $.isNode() ? require('child_process') : '';
 let cookiesArr = [], cookie = '', originCookie = '', message = '', newCookie = '';
 let helpAuthor = false;//为作者助力的开关
