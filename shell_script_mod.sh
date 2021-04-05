@@ -51,11 +51,11 @@
  #echo "7 * * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_df.js >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
  #echo "7 * * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_df.js >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
  #echo "7 * * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_df.js >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
- echo "40 * * * * sleep 1; node /scripts/jd_df.js conc >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
- echo "40 * * * * sleep 2; node /scripts/jd_df.js conc >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
- echo "40 * * * * sleep 3; node /scripts/jd_df.js conc >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
- echo "40 * * * * sleep 4; node /scripts/jd_df.js conc >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
- echo "40 * * * * sleep 5; node /scripts/jd_df.js conc >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
+ echo "43 * * * * sleep 1; node /scripts/jd_jxnc.js conc >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
+ echo "43 * * * * sleep 2; node /scripts/jd_jxnc.js conc >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
+ echo "43 * * * * sleep 3; node /scripts/jd_jxnc.js conc >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
+ echo "43 * * * * sleep 4; node /scripts/jd_jxnc.js conc >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
+ echo "43 * * * * sleep 5; node /scripts/jd_jxnc.js conc >> /scripts/logs/jd_df.log 2>&1" >> /scripts/docker/merged_list_file.sh
 
 #if ! [ ! -f "/scripts/docker/export_jd_cookies_acoolbook.sh" ]; then
 #  echo "* * * * * sh +x /acoolbook/update_crontab.sh 2>&1" >> /scripts/docker/merged_list_file.sh
