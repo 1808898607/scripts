@@ -26,7 +26,7 @@
  echo "2 0,10,22 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_xmf.js >> /scripts/logs/jd_xmf.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "32 7 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_superDay.js >> /scripts/logs/jd_superDay.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "3 10 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_marketLottery.js >> /scripts/logs/jd_marketLottery.log 2>&1" >> /scripts/docker/merged_list_file.sh
- echo "0 1,18 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_factory_component.js >> /scripts/logs/jd_factory_component.log 2>&1" >> /scripts/docker/merged_list_file.sh
+ #echo "0 1,18 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_factory_component.js >> /scripts/logs/jd_factory_component.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "48 * * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_xxl_gh.js >> /scripts/logs/jd_xxl_gh.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "3 10 1 * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_shakeBean.js >> /scripts/logs/jd_shakeBean.log 2>&1" >> /scripts/docker/merged_list_file.sh
  echo "1 0,21 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_entertainment.js >> /scripts/logs/jd_entertainment.log 2>&1" >> /scripts/docker/merged_list_file.sh
