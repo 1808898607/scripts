@@ -6,6 +6,9 @@
 每月运行一次即可
 
 新手写脚本，难免有bug，能用且用。
+[Script]
+cron "3 9 1 * *" script-path=https://github.com/acoolbook/scripts/edit/main/jd_paopao.js, tag=京东泡泡大战
+
 ============Quantumultx===============
 [task_local]
 #京东会员-摇京豆
