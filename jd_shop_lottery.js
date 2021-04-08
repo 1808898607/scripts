@@ -19,7 +19,7 @@
 hostname = *.isvjcloud.com
 ================Loon==============
 [Script]
-cron "3 0,10,23 * * *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/normal/monk_shop_lottery.js,tag=店铺大转盘
+cron "13 8,21 * * *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/normal/monk_shop_lottery.js,tag=店铺大转盘
 ===============Surge=================
 店铺大转盘 = type=cron,cronexp="3 0,10,23 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/normal/monk_shop_lottery.js
 ============小火箭=========
