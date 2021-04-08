@@ -9,7 +9,7 @@
 3 10 * * * https://raw.githubusercontent.com/i-chenzhe/qx/main/z_marketLottery.js, tag=京东超市-大转盘,  enabled=true
 ================Loon==============
 [Script]
-cron "3 10 * * *" script-path=https://raw.githubusercontent.com/i-chenzhe/qx/main/z_marketLottery.js,tag=京东超市-大转盘
+cron "3 9 * * *" script-path=https://raw.githubusercontent.com/i-chenzhe/qx/main/z_marketLottery.js,tag=京东超市-大转盘
 ===============Surge=================
 京东超市-大转盘 = type=cron,cronexp="3 10 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/i-chenzhe/qx/main/z_marketLottery.js
 ============小火箭=========
