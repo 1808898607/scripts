@@ -12,7 +12,7 @@
 ^https://lzkjdz\-isv\.isvjcloud\.com\/wxFansInterActionActivity\/activityContent url script-response-body https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/jd_getFanslove.js
 ================Loon==============
 [Script]
-cron "3 10 * * *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_fanslove.js,tag=粉丝互动
+cron "3 9 * * *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_fanslove.js,tag=粉丝互动
 ===============Surge=================
 粉丝互动 = type=cron,cronexp="3 10 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_fanslove.js
 ============小火箭=========
