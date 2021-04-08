@@ -16,6 +16,10 @@ function sj(){
     done
 }
 
+echo "31 21 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node conc /scripts/jd_cash.js >> /scripts/logs/jd_cash.log 2>&1" >> /scripts/docker/merged_list_file.sh
+echo "31 21 * * * node /scripts/jd_dreamFactory.js >> /scripts/logs/jd_dreamFactory.log 2>&1" >> /scripts/docker/merged_list_file.sh
+echo "31 0,21,23 * * * sleep 8; node /scripts/jd_jxnc.js >> /scripts/logs/jd_jxnc.log 2>&1" >> /scripts/docker/merged_list_file.sh
+
 function main(){
     # 首次运行时拷贝docker目录下文件
     [[ ! -d /jd_diy ]] && mkdir /jd_diy && cp -rf /scripts/docker/* /jd_diy
