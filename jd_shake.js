@@ -12,10 +12,10 @@
 ============Quantumultx===============
 [task_local]
 #摇一摇
-3 20 * * * https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_shake.js, tag=摇一摇,  enabled=true
+3 1,21 * * * https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_shake.js, tag=摇一摇,  enabled=true
 ================Loon==============
 [Script]
-cron "3 20 * * *" script-path=https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_shake.js,tag=摇一摇
+cron "3 1,21 * * *" script-path=https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_shake.js,tag=摇一摇
 ===============Surge=================
 摇一摇 = type=cron,cronexp="3 20 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_shake.js
 ============小火箭=========
