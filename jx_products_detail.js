@@ -12,7 +12,7 @@
 
   Loon:
   [Script]
-  cron "10 10 * * *" script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_products_detail.js,tag=京喜工厂商品列表详情
+  cron "3 10 * * *" script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_products_detail.js,tag=京喜工厂商品列表详情
 
   Surge:
   京喜工厂商品列表详情 = type=cron,cronexp="10 10 * * *",wake-system=1,timeout=20,script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_products_detail.js
