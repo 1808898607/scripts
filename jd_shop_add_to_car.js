@@ -8,7 +8,7 @@
 15 12 * * * https://raw.githubusercontent.com/monk-coder/dust/dust/car/monk_shop_add_to_car.js, tag=加购有礼,  enabled=true
 ================Loon==============
 [Script]
-cron "15 12 * * *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/car/monk_shop_add_to_car.js,tag=加购有礼
+cron "26 3 * * *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/car/monk_shop_add_to_car.js,tag=加购有礼
 ===============Surge=================
 加购有礼 = type=cron,cronexp="15 12 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/car/monk_shop_add_to_car.js
 ============小火箭=========
