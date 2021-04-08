@@ -25,7 +25,7 @@ Z_SUPER5G_NOTIFY //通知变量
 5 1,6,11,16,21 * 3-4 * https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_super5g.js, tag=5G超级盲盒, enabled=true
 ================Loon==============
 [Script]
-cron "5 1,6,11,16,21 * 3-4 * " script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_super5g.js, tag=5G超级盲盒
+cron "15 0,7,13,22 * 3-4 * " script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_super5g.js, tag=5G超级盲盒
 ===============Surge=================
 5G超级盲盒 = type=cron,cronexp="5 1,6,11,16,21 * 3-4 * ",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_super5g.js
 ============小火箭=========
