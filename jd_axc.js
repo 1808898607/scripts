@@ -16,7 +16,7 @@
 
 ================Loon==============
 [Script]
-cron "0 * * * *" script-path=https://raw.githubusercontent.com/shylocks/Loon/main/jd_xxl.js,tag=东东爱消除
+cron "18 * * * *" script-path=https://raw.githubusercontent.com/shylocks/Loon/main/jd_xxl.js,tag=东东爱消除
 
 ===============Surge=================
 东东爱消除 = type=cron,cronexp="0 * * * *",wake-system=1,timeout=20,script-path=https://raw.githubusercontent.com/shylocks/Loon/main/jd_xxl.js
