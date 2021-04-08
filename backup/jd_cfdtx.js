@@ -10,6 +10,8 @@
  * 手动任意完成，提示获取cookie成功即可，然后退出跑任务脚本
 
   hostname = wq.jd.com, m.jingxi.com
+  [Script]
+  cron "0 0 * * *" script-path=https://github.com/acoolbook/scripts/main/backup/jd_cfdtx.js, tag=财富岛提现
 
   # quanx
   [rewrite_local]
