@@ -14,7 +14,7 @@
 0 0,1-22/2 1-31 4-7 * https://raw.githubusercontent.com/monk-coder/dust/dust/member/monk_pasture.js, tag=有机牧场,  enabled=true
 ================Loon==============
 [Script]
-cron "0,33 * 1-31 4-7 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/member/monk_pasture.js,tag=有机牧场
+cron "0 */2 1-31 4-7 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/member/monk_pasture.js,tag=有机牧场
 ===============Surge=================
 有机牧场 = type=cron,cronexp="0 0,1-22/2 1-31 4-7 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/member/monk_pasture.js
 ============小火箭=========
