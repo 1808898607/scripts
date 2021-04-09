@@ -11,14 +11,14 @@
 ============Quantumultx===============
 [task_local]
 #有机牧场
-0 0,1-22/2 1-31 4-7 * https://raw.githubusercontent.com/monk-coder/dust/dust/member/monk_pasture.js, tag=有机牧场,  enabled=true
+0 0,1-22/2 * 4-7 * https://raw.githubusercontent.com/monk-coder/dust/dust/member/monk_pasture.js, tag=有机牧场,  enabled=true
 ================Loon==============
 [Script]
-cron "0 */2 1-31/1 4-7 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/member/monk_pasture.js,tag=有机牧场
+cron "0 */1 * 4-7 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/member/monk_pasture.js,tag=有机牧场
 ===============Surge=================
-有机牧场 = type=cron,cronexp="0 0,1-22/2 1-31 4-7 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/member/monk_pasture.js
+#有机牧场 = type=cron,cronexp="0 0,1-22/2 1-31 4-7 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/member/monk_pasture.js
 ============小火箭=========
-有机牧场 = type=cron,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/member/monk_pasture.js, cronexpr="0 0,1-22/2 1-31 4-7 *", timeout=3600, enable=true
+#有机牧场 = type=cron,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/member/monk_pasture.js, cronexpr="0 0,1-22/2 1-31 4-7 *", timeout=3600, enable=true
 */
 const $ = new Env('有机牧场');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
