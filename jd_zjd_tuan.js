@@ -12,7 +12,7 @@
 
   loon:
   [Script]
-  cron "4 * * * *" script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jd_zjd_tuan.js, tag=京东赚京东开团
+  cron "3 * * * *" script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jd_zjd_tuan.js, tag=京东赚京东开团
 
   surge:
   [Script]
