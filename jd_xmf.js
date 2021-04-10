@@ -12,7 +12,7 @@
 10 10 7-9 4 * https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_xmf.js, tag=京东小魔方,  enabled=true
 ================Loon==============
 [Script]
-cron "38 9,20 7-9 4 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_xmf.js,tag=京东小魔方
+cron "9 8 10-12 * *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_xmf.js,tag=京东小魔方
 ===============Surge=================
 京东小魔方 = type=cron,cronexp="10 10 7-9 4 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_xmf.js
 ============小火箭=========
