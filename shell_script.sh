@@ -18,6 +18,7 @@ function sj(){
 
 echo "6 0,6,23 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_jxnc.js >> /scripts/logs/jd_jxnc.log 2>&1" >> /scripts/docker/merged_list_file.sh
 echo "45 23 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_cash.js >> /scripts/logs/jd_cash.log 2>&1" >> /scripts/docker/merged_list_file.sh
+echo "10 0 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_jdzz.js >> /scripts/logs/jd_jdzz.log 2>&1" >> /scripts/docker/merged_list_file.sh
 #echo "22 * * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_dreamFactory.js >> /scripts/logs/jd_dreamFactory.log 2>&1" >> /scripts/docker/merged_list_file.sh
 echo "0 0 * * * sleep 1; node conc /scripts/sj_jd_carnivalcitys.js >> /scripts/logs/jd_carnivalcity.log 2>&1" >> /scripts/docker/merged_list_file.sh
 #echo "59 7,15,23 * * * sleep 57; node conc /scripts/jd_joy_reward.js >> /scripts/logs/jd_joy_rewardbf7.log 2>&1" >> /scripts/docker/merged_list_file.sh
