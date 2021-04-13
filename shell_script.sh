@@ -8,13 +8,14 @@ function sj(){
     rm -rf /acoolbook /scripts/sj_*
     git clone https://github.com/acoolbook/scripts.git /acoolbook
     # 拷贝脚本
-    for jsname in $(find /acoolbook -name "*.js" | grep -vE "\/backup\/"); do cp ${jsname} /scripts/${jsname##*/}; done
+    for jsname in $(find /acoolbook -name "*.js" | grep -vE "\/backup\/"); do cp ${jsname} /scripts/sj_${jsname##*/}; done
     # 匹配js脚本中的cron设置定时任务
     for jsname in $(find /acoolbook -name "*.js" | grep -vE "\/backup\/"); do
         jsnamecron="$(cat $jsname | grep -oE "/?/?cron \".*\"" | cut -d\" -f2)"
-        test -z "$jsnamecron" || echo "$jsnamecron node /scripts/${jsname##*/} >> /scripts/logs/${jsname##*/}.log 2>&1" >> /scripts/docker/merged_list_file.sh
+        test -z "$jsnamecron" || echo "$jsnamecron node /scripts/sj_${jsname##*/} >> /scripts/logs/sj_${jsname##*/}.log 2>&1" >> /scripts/docker/merged_list_file.sh
     done
 }
+
 
 echo "6 0,6,23 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_jxnc.js >> /scripts/logs/jd_jxnc.log 2>&1" >> /scripts/docker/merged_list_file.sh
 echo "45 23 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_cash.js >> /scripts/logs/jd_cash.log 2>&1" >> /scripts/docker/merged_list_file.sh
