@@ -23,10 +23,10 @@ echo "10 0 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_jdzz.js
 echo "59 23 * * * sleep 58; node conc /scripts/sj_jd_mc.js >> /scripts/logs/jd_mc.log 2>&1" >> /scripts/docker/merged_list_file.s
 echo "59 23 * * * sleep 57; node conc /scripts/sj_jd_mc.js >> /scripts/logs/jd_mc.log 2>&1" >> /scripts/docker/merged_list_file.s
 echo "59 23 * * * sleep 59; node conc /scripts/sj_jd_mc.js >> /scripts/logs/jd_mc.log 2>&1" >> /scripts/docker/merged_list_file.s
-echo "0 0 * * * sleep 2; node conc /scripts/sj_jd_mc.js >> /scripts/logs/jd_mc.log 2>&1" >> /scripts/docker/merged_list_file.s
-echo "0 0 * * * sleep 4; node conc /scripts/sj_jd_mc.js >> /scripts/logs/jd_mc.log 2>&1" >> /scripts/docker/merged_list_file.s
-#echo "22 * * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_dreamFactory.js >> /scripts/logs/jd_dreamFactory.log 2>&1" >> /scripts/docker/merged_list_file.sh
-echo "0,2 0 * * * sleep 1; node conc /scripts/sj_jd_carnivalcitys.js >> /scripts/logs/jd_carnivalcity.log 2>&1" >> /scripts/docker/merged_list_file.sh
+echo "0 0 * * * sleep 1; node conc /scripts/sj_jd_mc.js >> /scripts/logs/jd_mc.log 2>&1" >> /scripts/docker/merged_list_file.s
+#echo "0 0 * * * sleep 4; node conc /scripts/sj_jd_mc.js >> /scripts/logs/jd_mc.log 2>&1" >> /scripts/docker/merged_list_file.s
+echo "1 6 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_dreamFactory.js >> /scripts/logs/jd_dreamFactory.log 2>&1" >> /scripts/docker/merged_list_file.sh
+echo "0,2 0 * * * sleep 10; node conc /scripts/sj_jd_carnivalcitys.js >> /scripts/logs/jd_carnivalcity.log 2>&1" >> /scripts/docker/merged_list_file.sh
 #echo "59 7,15,23 * * * sleep 57; node conc /scripts/jd_joy_reward.js >> /scripts/logs/jd_joy_rewardbf7.log 2>&1" >> /scripts/docker/merged_list_file.sh
 #echo "59 7,15,23 * * * sleep 58; node conc /scripts/jd_joy_reward.js >> /scripts/logs/jd_joy_rewardbf8.log 2>&1" >> /scripts/docker/merged_list_file.sh
 #echo "59 7,15,23 * * * sleep 59; node conc /scripts/jd_joy_reward.js >> /scripts/logs/jd_joy_rewardbf9.log 2>&1" >> /scripts/docker/merged_list_file.sh
