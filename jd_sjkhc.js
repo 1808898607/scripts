@@ -12,7 +12,7 @@
 2 0-18/6 1-20 4 * https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_carnivalcity.js, tag=手机狂欢城, enabled=true
 ================Loon==============
 [Script]
-cron "4 0,13 1-20 4 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_carnivalcity.js,tag=手机狂欢城
+cron "3 0 1-20 4 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_carnivalcity.js,tag=手机狂欢城
 ===============Surge=================
 手机狂欢城 = type=cron,cronexp="2 0-18/6 1-20 4 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_carnivalcity.js
 ============小火箭=========
