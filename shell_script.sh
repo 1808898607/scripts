@@ -20,11 +20,11 @@ function sj(){
 echo "6 0,6,23 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_jxnc.js >> /scripts/logs/jd_jxnc.log 2>&1" >> /scripts/docker/merged_list_file.sh
 echo "45 23 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_cash.js >> /scripts/logs/jd_cash.log 2>&1" >> /scripts/docker/merged_list_file.sh
 echo "12,30 0 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_jdzz.js >> /scripts/logs/jd_jdzz.log 2>&1" >> /scripts/docker/merged_list_file.sh
-echo "0 0 * * * sleep 10; node conc /scripts/jd_shop.js >> /scripts/logs/jd_shop.log 2>&1" >> /scripts/docker/merged_list_file.sh
+echo "0 0 * * * sleep 10; node /scripts/jd_shop.js >> /scripts/logs/jd_shop.log 2>&1" >> /scripts/docker/merged_list_file.sh
 echo "59 23 * * * sleep 59; node conc /scripts/sj_jd_mc.js >> /scripts/logs/jd_mc.log 2>&1" >> /scripts/docker/merged_list_file.sh
-echo "0 0 * * * sleep 1; node conc /scripts/sj_jd_mc.js >> /scripts/logs/jd_mc.log 2>&1" >> /scripts/docker/merged_list_file.sh
+#echo "0 0 * * * sleep 1; node conc /scripts/sj_jd_mc.js >> /scripts/logs/jd_mc.log 2>&1" >> /scripts/docker/merged_list_file.sh
 echo "1 6 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_dreamFactory.js >> /scripts/logs/jd_dreamFactory.log 2>&1" >> /scripts/docker/merged_list_file.sh
-echo "0,2 0 * * * sleep 10; node conc /scripts/sj_jd_carnivalcitys.js >> /scripts/logs/jd_carnivalcity.log 2>&1" >> /scripts/docker/merged_list_file.sh
+echo "0 0 * * * sleep 5; node conc /scripts/sj_jd_carnivalcitys.js >> /scripts/logs/jd_carnivalcity.log 2>&1" >> /scripts/docker/merged_list_file.sh
 
 function main(){
     # 首次运行时拷贝docker目录下文件
