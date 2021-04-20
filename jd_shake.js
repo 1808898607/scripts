@@ -8,24 +8,24 @@
 助力活动链接： https://h5.m.jd.com/babelDiy/Zeus/4ZK4ZpvoSreRB92RRo8bpJAQNoTq/index.html
 参数 helpAuthor = false
 
-更新地址：https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_shake.js
+更新地址：https://share.r2ray.com/dust/i-chenzhe/z_shake.js
 ============Quantumultx===============
 [task_local]
 #摇一摇
-3 1,21 * * * https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_shake.js, tag=摇一摇,  enabled=true
+3 20 * * * https://share.r2ray.com/dust/i-chenzhe/z_shake.js, tag=摇一摇,  enabled=true
 ================Loon==============
 [Script]
-cron "3 1,21 * * *" script-path=https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_shake.js,tag=摇一摇
+cron "3 1,20 * * *" script-path=https://share.r2ray.com/dust/i-chenzhe/z_shake.js,tag=摇一摇
 ===============Surge=================
-摇一摇 = type=cron,cronexp="3 20 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_shake.js
+摇一摇 = type=cron,cronexp="3 20 * * *",wake-system=1,timeout=3600,script-path=https://share.r2ray.com/dust/i-chenzhe/z_shake.js
 ============小火箭=========
-摇一摇 = type=cron,script-path=https://raw.githubusercontent.com/i-chenzhe/qx/main/jd_shake.js, cronexpr="3 20 * * *", timeout=3600, enable=true
+摇一摇 = type=cron,script-path=https://share.r2ray.com/dust/i-chenzhe/z_shake.js, cronexpr="3 20 * * *", timeout=3600, enable=true
 */
 const $ = new Env('超级摇一摇');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 let cookiesArr = [], cookie = '';
-let helpAuthor = false;//为作者助力的开关
+let helpAuthor = true;//为作者助力的开关
 let joinMember = false;//是否完成开卡任务开关
 if ($.isNode()) {
     Object.keys(jdCookieNode).forEach((item) => {
