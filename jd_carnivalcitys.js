@@ -24,7 +24,7 @@ d、 30000名之外，0京豆
 
 =====================Loon================
 [Script]
-cron "6 12,18 * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_carnivalcity.js, tag=京东手机狂欢城
+cron "5 0,18 1-21 4 *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_carnivalcity.js, tag=京东手机狂欢城
 
 ====================Surge================
 京东手机狂欢城 = type=cron,cronexp=0 0-18/6 * * *,wake-system=1,timeout=3600,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_carnivalcity.js
