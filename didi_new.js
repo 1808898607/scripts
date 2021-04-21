@@ -51,7 +51,7 @@ Surge:
 
 Loon、Shadowrocket:
 [Script]
-cron "0 1,20,21 * * *" script-path=https://raw.githubusercontent.com/zZPiglet/Task/master/DiDi/DiDi_new.js
+crDon "0 1,20,21 * * *" script-path=https://raw.githubusercontent.com/zZPiglet/Task/master/DiDi/DiDi_new.js
 # APP
 http-request ^https:\/\/as\.xiaojukeji\.com\/ep\/as\/toggles\? script-path=https://raw.githubusercontent.com/zZPiglet/Task/master/DiDi/DiDi_new.js
 # WeChat-MiniApp
@@ -63,9 +63,8 @@ hostname = as.xiaojukeji.com, common.diditaxi.com.cn // 前者为 App 获取，�
 
 获取完 Token 后可不注释 rewrite / hostname，Token 更新时会弹窗。若因 MitM 导致该软件或小程序网络不稳定，可注释掉 hostname。
 */
-//const $ = new Env('滴滴');
 
-const $ = new Env("Didi");//API
+const $ = API("Didi");
 $.debug = [true, "true"].includes($.read("debug"));
 const ERR = MYERR();
 $.subTitle = "";
@@ -108,8 +107,8 @@ if ($.isRequest) {
 	$.done({});
 } else {
 	!(async () => {
-		$.Ticket = $.token //$.read("#DiDi");
-		$.city = $.cityId  //$.read("#DiDi_city");
+		$.Ticket = $.read("#DiDi");
+		$.city = $.read("#DiDi_city");
 		$.now = new Date().getTime();
 		if (!$.Ticket || !$.city) {
 			throw new ERR.TokenError("❌ 未获取或填写 Token");
