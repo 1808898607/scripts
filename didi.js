@@ -20,7 +20,7 @@
   [Script]
   http-request ^https:\/\/as\.xiaojukeji\.com\/ep\/as\/toggles\?.*city=(\d*)&.*ticket=(.*)& script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/didi.cookie.js, requires-body=false, timeout=10, tag=滴滴出行cookie
   http-request ^https?:\/\/bosp-api\.xiaojukeji\.com\/bosp-api\/lottery\/info?.*lid=([^&]*) script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/didi.cookie.js, requires-body=false, timeout=10, tag=滴滴出行cookie
-  cron "0 9 * * *" script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/didi.js, tag=滴滴出行
+  cron "2 0 * * *" script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/didi.js, tag=滴滴出行
 
   surge:
   [Script]
