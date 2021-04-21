@@ -64,7 +64,9 @@ hostname = as.xiaojukeji.com, common.diditaxi.com.cn // 前者为 App 获取，�
 获取完 Token 后可不注释 rewrite / hostname，Token 更新时会弹窗。若因 MitM 导致该软件或小程序网络不稳定，可注释掉 hostname。
 */
 
-const $ = API("Didi");
+const $ = new Env("Didi");
+const API_HOST = 'https://bosp-api.xiaojukeji.com/';
+const REWARD_API_HOST = 'https://rewards.xiaojukeji.com/loyalty_credit/bonus/';
 $.debug = [true, "true"].includes($.read("debug"));
 const ERR = MYERR();
 $.subTitle = "";
