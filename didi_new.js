@@ -65,6 +65,8 @@ hostname = as.xiaojukeji.com, common.diditaxi.com.cn // 前者为 App 获取，�
 */
 
 const $ = new Env("Didi");
+$.token = $.isNode() ? process.env.didi_token || "" : "";//$.getdata('didi_token') || '';
+$.cityId = $.isNode() ? process.env.didi_city_id || "" : "";//$.getdata('didi_city_id') || '';
 const API_HOST = 'https://bosp-api.xiaojukeji.com/';
 const REWARD_API_HOST = 'https://rewards.xiaojukeji.com/loyalty_credit/bonus/';
 $.debug = [true, "true"].includes($.read("debug"));
@@ -109,8 +111,8 @@ if ($.isRequest) {
 	$.done({});
 } else {
 	!(async () => {
-		$.Ticket = $.read("#DiDi");
-		$.city = $.read("#DiDi_city");
+		$.Ticket = $.token//$.read("#DiDi");
+		$.city = $.cityId//$.read("#DiDi_city");
 		$.now = new Date().getTime();
 		if (!$.Ticket || !$.city) {
 			throw new ERR.TokenError("❌ 未获取或填写 Token");
