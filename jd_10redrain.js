@@ -1,6 +1,6 @@
 /*
 只能用一天。需每天寻找直播抓包
-cron "0 14-23 * * *" script-path=https://github.com/acoolbook/scripts/main/10_redrain.js, tag=10豆雨
+cron "0,1 0,12-23 * * *" script-path=https://github.com/acoolbook/scripts/main/10_redrain.js, tag=10豆雨
 */
 const $ = new Env('10豆雨');
 let allMessage = '';
