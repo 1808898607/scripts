@@ -8,7 +8,7 @@
 25 * * * * https://share.r2ray.com/dust/i-chenzhe/z_health_energy.js, tag=健康社区-收能量,  enabled=true
 ================Loon==============
 [Script]
-cron "16 * * * *" script-path=https://share.r2ray.com/dust/i-chenzhe/z_health_energy.js,tag=健康社区-收能量
+crQon "16 * * * *" script-path=https://share.r2ray.com/dust/i-chenzhe/z_health_energy.js,tag=健康社区-收能量
 ===============Surge=================
 健康社区-收能量 = type=cron,cronexp="25 * * * *",wake-system=1,timeout=3600,script-path=https://share.r2ray.com/dust/i-chenzhe/z_health_energy.js
 ============小火箭=========
