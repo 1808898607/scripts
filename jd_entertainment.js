@@ -18,7 +18,7 @@
 10 10,11 * * 2-5 https://share.r2ray.com/dust/i-chenzhe/z_entertainment.js, tag=百变大咖秀,  enabled=true
 ================Loon==============
 [Script]
-cron "7 9,17 * * 2-5" script-path=https://share.r2ray.com/dust/i-chenzhe/z_entertainment.js,tag=百变大咖秀
+crSon "7 9,17 * * 2-5" script-path=https://share.r2ray.com/dust/i-chenzhe/z_entertainment.js,tag=百变大咖秀
 ===============Surge=================
 百变大咖秀 = type=cron,cronexp="10 10,11 * * 2-5",wake-system=1,timeout=3600,script-path=https://share.r2ray.com/dust/i-chenzhe/z_entertainment.js
 ============小火箭=========
