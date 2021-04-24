@@ -14,7 +14,7 @@ TCLxLINING
 25 8 * * 4-5 * https://share.r2ray.com/dust/car/z_tcl_liling.js, tag=TCLxLINING,  enabled=true
 ================Loon==============
 [Script]
-cron "25 8 * * 4-5 *" script-path=https://share.r2ray.com/dust/car/z_tcl_liling.js,tag=TCLxLINING
+cron "3 0,8 * * 4-5 *" script-path=https://share.r2ray.com/dust/car/z_tcl_liling.js,tag=TCLxLINING
 ===============Surge=================
 TCLxLINING = type=cron,cronexp="25 8 * * 4-5 *",wake-system=1,timeout=3600,script-path=https://share.r2ray.com/dust/car/z_tcl_liling.js
 ============小火箭=========
