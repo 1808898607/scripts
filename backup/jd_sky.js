@@ -6,7 +6,7 @@
 ============Quantumultx===============
 [task_local]
 #创维408下班全勤奖
-15 08 2-18 4 * https://raw.githubusercontent.com/monk-coder/dust/dust/car/monk_skyworth.js, tag=创维408下班全勤奖,  enabled=true
+15 8 2-18 4 * https://raw.githubusercontent.com/monk-coder/dust/dust/car/monk_skyworth.js, tag=创维408下班全勤奖,  enabled=true
 ================Loon==============
 [Script]
 cron "15 6 2-18 4 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/car/monk_skyworth.js,tag=创维408下班全勤奖
