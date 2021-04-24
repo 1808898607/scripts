@@ -16,16 +16,9 @@ function sj(){
     done
 }
 
-
-echo "10 0,6,23 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_jxnc.js >> /scripts/logs/jd_jxnc.log 2>&1" >> /scripts/docker/merged_list_file.sh
-echo "45 23 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_cash.js >> /scripts/logs/jd_cash.log 2>&1" >> /scripts/docker/merged_list_file.sh
-echo "15 0 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_jdzz.js >> /scripts/logs/jd_jdzz.log 2>&1" >> /scripts/docker/merged_list_file.sh
-echo "6,17 0 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_syj.js >> /scripts/logs/jd_syj.log 2>&1" >> /scripts/docker/merged_list_file.sh
-echo "0 0 * * * sleep 1; node /scripts/jd_shop.js >> /scripts/logs/jd_shop.log 2>&1" >> /scripts/docker/merged_list_file.sh
-#echo "59 23 * * * sleep 59; node conc /scripts/sj_jd_mc.js >> /scripts/logs/jd_mc.log 2>&1" >> /scripts/docker/merged_list_file.sh
-echo "3 0,6 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_dreamFactory.js >> /scripts/logs/jd_dreamFactory.log 2>&1" >> /scripts/docker/merged_list_file.sh
+#echo "3 0,6 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_dreamFactory.js >> /scripts/logs/jd_dreamFactory.log 2>&1" >> /scripts/docker/merged_list_file.sh
 #apk add nodejs-current
-#dos2unix /scripts/docker/merged_list_file.sh
+dos2unix /scripts/docker/merged_list_file.sh
 
 
 function main(){
