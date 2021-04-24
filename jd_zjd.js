@@ -11,7 +11,7 @@
 
   loon:
   [Script]
-  cron "33 18,23 * * *" script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jd_zjd.js, tag=半自动领京豆
+  cron "36 0,23 * * *" script-path=https://raw.githubusercontent.com/whyour/hundun/master/quanx/jd_zjd.js, tag=半自动领京豆
 
   surge:
   [Script]
