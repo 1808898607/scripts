@@ -18,6 +18,7 @@ function sj(){
 
 #echo "3 0,6 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_dreamFactory.js >> /scripts/logs/jd_dreamFactory.log 2>&1" >> /scripts/docker/merged_list_file.sh
 #apk add nodejs-current
+#转换win换行符-Linux
 dos2unix /scripts/docker/merged_list_file.sh
 
 
