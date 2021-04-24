@@ -25,6 +25,7 @@ echo "0 0 * * * sleep 1; node /scripts/jd_shop.js >> /scripts/logs/jd_shop.log 2
 #echo "59 23 * * * sleep 59; node conc /scripts/sj_jd_mc.js >> /scripts/logs/jd_mc.log 2>&1" >> /scripts/docker/merged_list_file.sh
 echo "3 0,6 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_dreamFactory.js >> /scripts/logs/jd_dreamFactory.log 2>&1" >> /scripts/docker/merged_list_file.sh
 #apk add nodejs-current
+sed -e ‘s/^M/\n/g’ /scripts/docker/merged_list_file.sh
 
 function main(){
     # 首次运行时拷贝docker目录下文件
