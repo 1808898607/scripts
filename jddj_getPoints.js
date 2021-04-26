@@ -4,7 +4,7 @@
 //cookie只要里面的deviceid_pdj_jd=xxx-xxx-xxx;o2o_m_h5_sid=xxx-xxx-xxx关键信息
 //五分钟运行一次
 //boxjs订阅地址:https://gitee.com/passerby-b/javascript/raw/master/JD/passerby-b.boxjs.json
-//  cron "1-55/15 * * * *" script-path=https://github.com/717785320/JDDJ/blob/main/jddj_getPoints.js
+//  cron "8-55/15 * * * *" script-path=https://github.com/717785320/JDDJ/blob/main/jddj_getPoints.js
 
 const $ = new API("jddj_getPoints");
 let cookies = [];
