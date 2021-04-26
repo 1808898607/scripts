@@ -1,7 +1,7 @@
 # 每3天的23:50分清理一次日志(互助码不清理，proc_file.sh对该文件进行了去重)
 56 23 */5 * * find /scripts/logs -name '*.log' | grep -v 'sharecodeCollection' | xargs rm -rf
 #收集助力码
-19 * * * * sh +x /scripts/docker/auto_help.sh collect >> /scripts/logs/auto_help_collect.log 2>&1
+31 * * * * sh +x /scripts/docker/auto_help.sh collect >> /scripts/logs/auto_help_collect.log 2>&1
 
 ##############短期活动##############
 #女装盲盒 活动时间：2021-04-1到2021-04-31
@@ -19,7 +19,7 @@
 
 ##############长期活动##############
 # 签到
-3 0,17 * * * cd /scripts && node jd_bean_sign.js >> /scripts/logs/jd_bean_sign.log 2>&1
+5 0,17 * * * cd /scripts && node jd_bean_sign.js >> /scripts/logs/jd_bean_sign.log 2>&1
 # 东东超市兑换奖品
 0,30 0 * * * node /scripts/jd_blueCoin.js >> /scripts/logs/jd_blueCoin.log 2>&1
 # 摇京豆
@@ -29,7 +29,8 @@
 # 宠汪汪
 35 */2,23 * * * node /scripts/jd_joy.js >> /scripts/logs/jd_joy.log 2>&1
 # 宠汪汪积分兑换京豆
-0 0,8,16 * * * node /scripts/jd_joy_reward.js >> /scripts/logs/jd_joy_reward.log 2>&1
+0 0 * * * node /scripts/jd_joy_reward.js >> /scripts/logs/jd_joy_reward.log 2>&1
+0 8,16 * * * node conc /scripts/jd_joy_reward.js >> /scripts/logs/jd_joy_reward.log 2>&1
 # 宠汪汪喂食
 25 */1 * * * node /scripts/jd_joy_feedPets.js >> /scripts/logs/jd_joy_feedPets.log 2>&1
 # 宠汪汪邀请助力
@@ -43,13 +44,13 @@
 # 京东全民开红包
 5 0-23/4 * * * node /scripts/jd_redPacket.js >> /scripts/logs/jd_redPacket.log 2>&1
 # 进店领豆
-1 0,13 * * * node /scripts/jd_shop.js >> /scripts/logs/jd_shop.log 2>&1
+1 0,12 * * * node /scripts/jd_shop.js >> /scripts/logs/jd_shop.log 2>&1
 # 东东超市
 18 0,1-23/2 * * * node /scripts/jd_superMarket.js >> /scripts/logs/jd_superMarket.log 2>&1
 # 取关京东店铺商品
 6 8 * * * node /scripts/jd_unsubscribe.js >> /scripts/logs/jd_unsubscribe.log 2>&1
 # 京豆变动通知
-15 8 * * * node /scripts/jd_bean_change.js >> /scripts/logs/jd_bean_change.log 2>&1
+30 7 * * * node /scripts/jd_bean_change.js >> /scripts/logs/jd_bean_change.log 2>&1
 # 京东抽奖机
 0 0,12,23 * * * node /scripts/jd_lotteryMachine.js >> /scripts/logs/jd_lotteryMachine.log 2>&1
 # 京东排行榜
@@ -67,9 +68,9 @@
 # 东东工厂
 26 * * * * node /scripts/jd_jdfactory.js >> /scripts/logs/jd_jdfactory.log 2>&1
 # 赚京豆(微信小程序)
-7,26 0,22 * * * node /scripts/jd_syj.js >> /scripts/logs/jd_syj.log 2>&1
+7,21,26 0,17,22 * * * node /scripts/jd_syj.js >> /scripts/logs/jd_syj.log 2>&1
 # 京东快递签到
-13 1 * * * node /scripts/jd_kd.js >> /scripts/logs/jd_kd.log 2>&1
+56 1 * * * node /scripts/jd_kd.js >> /scripts/logs/jd_kd.log 2>&1
 # 京东汽车(签到满500赛点可兑换500京豆)
 0 0 * * * node /scripts/jd_car.js >> /scripts/logs/jd_car.log 2>&1
 # 领京豆额外奖励(每日可获得3京豆)
@@ -85,13 +86,13 @@
 # 口袋书店
 23 7,12,19 * * * node /scripts/jd_bookshop.js >> /scripts/logs/jd_bookshop.log 2>&1
 # 京喜农场
-13 0,6,9,12,18,23 * * * node /scripts/jd_jxnc.js >> /scripts/logs/jd_jxnc.log 2>&1
+9 0,6,9,12,18,23 * * * node /scripts/jd_jxnc.js >> /scripts/logs/jd_jxnc.log 2>&1
 # 签到领现金
 5 */4,23 * * * node /scripts/jd_cash.js >> /scripts/logs/jd_cash.log 2>&1
 # 京喜app签到
 14 7 * * * node /scripts/jx_sign.js >> /scripts/logs/jx_sign.log 2>&1
 # 闪购盲盒
-32 8 * * * node /scripts/jd_sgmh.js >> /scripts/logs/jd_sgmh.log 2>&1
+13 8,20 * * * node /scripts/jd_sgmh.js >> /scripts/logs/jd_sgmh.log 2>&1
 # 京东秒秒币
 3 6 * * * node /scripts/jd_ms.js >> /scripts/logs/jd_ms.log 2>&1
 #美丽研究院
@@ -99,7 +100,7 @@
 #京东保价
 31 10 * * 2,5 node /scripts/jd_price.js >> /scripts/logs/jd_price.log 2>&1
 #京东极速版签到+赚现金任务
-14 1,6 * * * node /scripts/jd_speed_sign.js >> /scripts/logs/jd_speed_sign.log 2>&1
+7 0,6,17 * * * node /scripts/jd_speed_sign.js >> /scripts/logs/jd_speed_sign.log 2>&1
 #监控crazyJoy分红
 10 12 * * * node /scripts/jd_crazy_joy_bonus.js >> /scripts/logs/jd_crazy_joy_bonus.log 2>&1
 #京喜财富岛
@@ -113,13 +114,15 @@
 #京小兑
 26 7,15,21 * * * node /scripts/jd_jxd.js >> /scripts/logs/jd_jxd.log 2>&1
 #京东健康社区
-13 1,6,22 * * * node /scripts/jd_health.js >> /scripts/logs/jd_health.log 2>&1
+13 0,6,22 * * * node /scripts/jd_health.js >> /scripts/logs/jd_health.log 2>&1
 #京东健康社区收集健康能量
-38 * * * * node /scripts/jd_health_collect.js >> /scripts/logs/jd_health_collect.log 2>&1
+11,33 * * * * node /scripts/jd_health_collect.js >> /scripts/logs/jd_health_collect.log 2>&1
 # 幸运大转盘
 15 8,22 * * * node /scripts/jd_market_lottery.js >> /scripts/logs/jd_market_lottery.log 2>&1
 #TCL
 3 0,23 * * * node /scripts/jd_tcl.js >> /scripts/logs/jd_tcl.log 2>&1
+# 津贴                                                                                                                
+1 0,8,23 * * * node /scripts/jd_jin_tie.js >> /scripts/logs/jd_jin_tie.log 2>&1 
 #test
 #3 0,23 * * * node /scripts/jd_tcl.js >> /scripts/logs/jd_tcl.log 2>&1
 #3 0,23 * * * node /scripts/jd_tcl.js >> /scripts/logs/jd_tcl.log 2>&1
