@@ -6,12 +6,13 @@
 //boxjs订阅地址:https://gitee.com/passerby-b/javascript/raw/master/JD/passerby-b.boxjs.json
 // cron "6 8,11,17 * * *" script-path=https://github.com/717785320/JDDJ/blob/main/jddj_fruit.js
 
-const $ = new API("djgy");
-let cookies = [];
-let thiscookie = '', deviceid = '';
+const $ = new API("jddj_fruit");
+let isNotify = true;//是否通知,仅限nodejs,手机用boxjs设置
+let thiscookie = '', deviceid = '', nickname = '';
 let lat = '30.' + Math.round(Math.random() * (99999 - 10000) + 10000);
 let lng = '114.' + Math.round(Math.random() * (99999 - 10000) + 10000);
 let cityid = Math.round(Math.random() * (1500 - 1000) + 1000);
+let cookies = [], treeInfoTimes = false; notify = '';
 !(async () => {
     if (cookies.length == 0) {
         if ($.env.isNode) { delete require.cache['./jddj_cookie.js']; cookies = require('./jddj_cookie.js') }
@@ -30,6 +31,12 @@ let cityid = Math.round(Math.random() * (1500 - 1000) + 1000);
         console.log(`\r\n请先填写cookie`);
         return;
     }
+    if (!$.env.isNode) {
+        isNotify = $.read('#jddj_isNotify');
+    }
+    else {
+        notify = require('./sendNotify');
+    }
     for (let i = 0; i < cookies.length; i++) {
         console.log(`\r\n★★★★★开始执行第${i + 1}个账号,共${cookies.length}个账号★★★★★`);
         thiscookie = cookies[i];
@@ -39,22 +46,23 @@ let cityid = Math.round(Math.random() * (1500 - 1000) + 1000);
         var jsonlist = {};
         var params = thiscookie.split(';');
         params.forEach(item => {
-            if (item.indexOf('=') > -1) {
-                jsonlist[item.split('=')[0].trim()] = item.split('=')[1].trim();
-            }
+            if (item.indexOf('=') > -1) jsonlist[item.split('=')[0].trim()] = item.split('=')[1].trim();
         });
         deviceid = jsonlist.deviceid_pdj_jd;
 
-        var shareCode = '';
         await userinfo();
         await $.wait(1000);
 
+        treeInfoTimes = false;
         await treeInfo();
         await $.wait(1000);
 
         let tslist = await taskList();
         if (tslist.code == 1) {
-            $.notify('第' + (i + 1) + '个账号cookie过期', ',请访问https://daojia.jd.com/html/index.html抓取cookie', { url: 'https://daojia.jd.com/html/index.html' });
+            $.notify('第' + (i + 1) + '个账号cookie过期', '请访问https://daojia.jd.com/html/index.html抓取cookie', { url: 'https://daojia.jd.com/html/index.html' });
+            if ($.env.isNode && `${isNotify}` == 'true') {
+                await notify.sendNotify('第' + (i + 1) + '个账号cookie过期', '请访问https://daojia.jd.com/html/index.html抓取cookie');
+            }
             continue;
         }
 
@@ -70,13 +78,18 @@ let cityid = Math.round(Math.random() * (1500 - 1000) + 1000);
         await water();
         await $.wait(1000);
 
-        await treeInfo();
+        await runTask2(tslist);
         await $.wait(1000);
 
+        await treeInfo();
+        await $.wait(1000);
     }
 
-})().catch((e) => {
+})().catch(async (e) => {
     console.log('', `❌失败! 原因: ${e}!`, '');
+    if ($.env.isNode && `${isNotify}` == 'true') {
+        notify.sendNotify('京东到家果园', `❌失败! 原因: ${e}!`);
+    }
 }).finally(() => {
     $.done();
 })
@@ -90,8 +103,11 @@ async function userinfo() {
             $.http.get(option).then(response => {
                 let data = JSON.parse(response.body);
                 if (data.code == 0) {
-                    nickname = data.result.userInfo.userBaseInfo.nickName;
-                    console.log("●●●" + nickname + "●●●");
+                    try {
+                        nickname = data.result.userInfo.userBaseInfo.nickName;
+                        console.log("●●●" + nickname + "●●●");
+                    } catch (error) { nickname = '昵称获取失败' }
+
                 }
             })
             resolve();
@@ -109,14 +125,13 @@ async function taskList() {
     return new Promise(async resolve => {
         try {
             let option = urlTask('https://daojia.jd.com/client?_jdrandom=' + Math.round(new Date()) + '&functionId=task%2Flist&isNeedDealError=true&body=%7B%22modelId%22%3A%22M10007%22%2C%22plateCode%22%3A1%7D&channel=ios&platform=6.6.0&platCode=h5&appVersion=6.6.0&appName=paidaojia&deviceModel=appmodel&traceId=' + deviceid + '&deviceToken=' + deviceid + '&deviceId=' + deviceid, '');
-
             $.http.get(option).then(response => {
                 let data = JSON.parse(response.body);
                 resolve(data);
             })
 
         } catch (error) {
-            console.log('\n【浇水】:' + error);
+            console.log('\n【任务列表】:' + error);
             resolve({});
         }
 
@@ -175,16 +190,17 @@ async function sign() {
 async function zhuLi() {
     return new Promise(async resolve => {
         try {
-            let scodes = 'JD_b8b3c7d14339000@23f5861a35e48ef,JD_b8b5c4ac7d29000@23f586f456dcf50,JD_b8b85dad1f5a000@23f5870bd2f9bea,JD_b8bbd041af18000@23f58722d802053,JD_b8bcfa8f7842000@23f58739e3aec6e,JD_b8fa483e8739000@23f587514a271b2,JD_21eccc93aa0f3c5@23f587667507965'.split(',');
+            let scodes = [];
+            await $.http.get({ url: 'https://gitee.com/passerby-b/javascript/raw/master/test/sharecode.js' }).then(response => { scodes = response.body.split(','); })
             let scode = scodes[Math.round(Math.random() * (scodes.length - 1) + 0)];
             let option = urlTask(`https://daojia.jd.com/client?lat=${lat}&lng=${lng}&lat_pos=${lat}&lng_pos=${lng}&city_id=${cityid}&deviceToken=${deviceid}&deviceId=${deviceid}&channel=wx_xcx&mpChannel=wx_xcx&platform=5.0.0&platCode=mini&appVersion=5.0.0&appName=paidaojia&deviceModel=appmodel&xcxVersion=9.2.0&isNeedDealError=true&business=djgyzhuli&functionId=task%2Ffinished&body=%7B%22modelId%22%3A%22M10007%22%2C%22taskType%22%3A1201%2C%22taskId%22%3A%2223eee1c043c01bc%22%2C%22plateCode%22%3A5%2C%22assistTargetPin%22%3A%22${scode.split('@')[0]}%22%2C%22uniqueId%22%3A%22${scode.split('@')[1]}%22%7D`, ``);
             $.http.get(option).then(response => {
                 let data = JSON.parse(response.body);
-                //console.log('\n【助力】:' + data.msg);
+                console.log('\n【助力】:' + data.msg);
                 resolve();
             })
         } catch (error) {
-            //console.log('\n【助力】:' + error);
+            console.log('\n【助力】:' + error);
             resolve();
         }
     })
@@ -206,7 +222,7 @@ async function runTask(tslist) {
                     } else {
                         msg = data.msg;
                     }
-                    console.log('\n领取任务【' + item.taskName + '】:' + msg);
+                    console.log('\n领取任务【' + item.taskTitle + '】:' + msg);
                 })
 
                 if (item.browseTime > -1) {
@@ -225,7 +241,7 @@ async function runTask(tslist) {
                     } else {
                         msg = data.msg;
                     }
-                    console.log('\n任务完成【' + item.taskName + '】:' + msg);
+                    console.log('\n任务完成【' + item.taskTitle + '】:' + msg);
                 })
 
                 //领取奖励
@@ -237,8 +253,71 @@ async function runTask(tslist) {
                     } else {
                         msg = data.msg;
                     }
-                    console.log('\n领取奖励【' + item.taskName + '】:' + msg);
+                    console.log('\n领取奖励【' + item.taskTitle + '】:' + msg);
                 })
+            }
+            resolve();
+        } catch (error) {
+            console.log('\n【执行任务】:' + error);
+            resolve();
+        }
+
+    })
+}
+
+//限时任务,浇水后运行
+async function runTask2(tslist) {
+    return new Promise(async resolve => {
+        try {
+            for (let index = 0; index < tslist.result.taskInfoList.length; index++) {
+                const item = tslist.result.taskInfoList[index];
+                if (item.taskTitle.indexOf('限时') > -1) {
+
+
+
+                    //领取任务
+                    let option = urlTask('https://daojia.jd.com/client?_jdrandom=' + Math.round(new Date()) + '&functionId=task%2Freceived&isNeedDealError=true&body=%7B%22modelId%22%3A%22' + item.modelId + '%22%2C%22taskId%22%3A%22' + item.taskId + '%22%2C%22taskType%22%3A' + item.taskType + '%2C%22plateCode%22%3A1%2C%22subNode%22%3Anull%7D&channel=ios&platform=6.6.0&platCode=h5&appVersion=6.6.0&appName=paidaojia&deviceModel=appmodel&traceId=' + deviceid + Math.round(new Date()) + '&deviceToken=' + deviceid + '&deviceId=' + deviceid + '', ``);
+                    await $.http.get(option).then(response => {
+                        var data = JSON.parse(response.body), msg = '';
+                        if (data.code == 0) {
+                            msg = data.msg + ',奖励:' + data.result.awardValue;
+                        } else {
+                            msg = data.msg;
+                        }
+                        console.log('\n领取任务【' + item.taskTitle + '】:' + msg);
+                    })
+
+                    if (item.browseTime > -1) {
+                        for (let t = 0; t < parseInt(item.browseTime); t++) {
+                            await $.wait(1000);
+                            console.log('计时:' + (t + 1) + '秒...');
+                        }
+                    }
+
+                    //结束任务
+                    option = urlTask('https://daojia.jd.com/client?_jdrandom=' + Math.round(new Date()) + '&functionId=task%2Ffinished&isNeedDealError=true&body=%7B%22modelId%22%3A%22' + item.modelId + '%22%2C%22taskId%22%3A%22' + item.taskId + '%22%2C%22taskType%22%3A' + item.taskType + '%2C%22plateCode%22%3A1%2C%22subNode%22%3Anull%7D&channel=ios&platform=6.6.0&platCode=h5&appVersion=6.6.0&appName=paidaojia&deviceModel=appmodel&traceId=' + deviceid + Math.round(new Date()) + '&deviceToken=' + deviceid + '&deviceId=' + deviceid + '', ``);
+                    await $.http.get(option).then(response => {
+                        var data = JSON.parse(response.body), msg = '';
+                        if (data.code == 0) {
+                            msg = data.msg + ',奖励:' + data.result.awardValue;
+                        } else {
+                            msg = data.msg;
+                        }
+                        console.log('\n任务完成【' + item.taskTitle + '】:' + msg);
+                    })
+
+                    //领取奖励
+                    option = urlTask('https://daojia.jd.com/client?_jdrandom=' + Math.round(new Date()) + '&functionId=task%2FsendPrize&isNeedDealError=true&body=%7B%22modelId%22%3A%22' + item.modelId + '%22%2C%22taskId%22%3A%22' + item.taskId + '%22%2C%22taskType%22%3A' + item.taskType + '%2C%22plateCode%22%3A1%2C%22subNode%22%3Anull%7D&channel=ios&platform=6.6.0&platCode=h5&appVersion=6.6.0&appName=paidaojia&deviceModel=appmodel&traceId=' + deviceid + Math.round(new Date()) + '&deviceToken=' + deviceid + '&deviceId=' + deviceid + '', ``);
+                    await $.http.get(option).then(response => {
+                        var data = JSON.parse(response.body), msg = '';
+                        if (data.code == 0) {
+                            msg = data.msg + ',奖励:' + data.result.awardValue;
+                        } else {
+                            msg = data.msg;
+                        }
+                        console.log('\n领取奖励【' + item.taskTitle + '】:' + msg);
+                    })
+                }
             }
             resolve();
         } catch (error) {
@@ -258,18 +337,31 @@ async function treeInfo() {
                 let data = JSON.parse(response.body);
                 if (data.code == 0) {
                     console.log('\n【果树信息】:' + data.result.activityInfoResponse.fruitName + ',还需浇水' + data.result.activityInfoResponse.curStageLeftProcess + '次' + data.result.activityInfoResponse.stageName + ',还剩' + data.result.userResponse.waterBalance + '滴水');
-                    shareCode = data.result.activityInfoResponse.userPin;
+
+                    if (data.result.activityInfoResponse.curStageLeftProcess == 0 && treeInfoTimes) {
+                        $.notify(nickname, '京东到家果园' + data.result.activityInfoResponse.fruitName + '已成熟,快去收取!', '');
+                        if ($.env.isNode && `${isNotify}` == 'true') {
+                            await notify.sendNotify(nickname, '京东到家果园' + data.result.activityInfoResponse.fruitName + '已成熟,快去收取!');
+                        }
+                    }
+                    if (data.result.activityInfoResponse.curStageLeftProcess > 0 && treeInfoTimes) {
+                        $.notify(nickname, '\n【果树信息】:' + data.result.activityInfoResponse.fruitName + ',还需浇水' + data.result.activityInfoResponse.curStageLeftProcess + '次' + data.result.activityInfoResponse.stageName + ',还剩' + data.result.userResponse.waterBalance + '滴水', '');
+                        if ($.env.isNode && `${isNotify}` == 'true') {
+                            await notify.sendNotify(nickname, '\n【果树信息】:' + data.result.activityInfoResponse.fruitName + ',还需浇水' + data.result.activityInfoResponse.curStageLeftProcess + '次' + data.result.activityInfoResponse.stageName + ',还剩' + data.result.userResponse.waterBalance + '滴水');
+                        }
+                    }
                 }
                 resolve();
             })
         } catch (error) {
             console.log('\n【果树信息】:' + error);
             resolve();
+        } finally {
+            treeInfoTimes = true;
         }
 
     })
 }
-
 
 function urlTask(url, body) {
     let option = {
