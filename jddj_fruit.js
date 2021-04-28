@@ -196,7 +196,7 @@ async function zhuLi() {
             let option = urlTask(`https://daojia.jd.com/client?lat=${lat}&lng=${lng}&lat_pos=${lat}&lng_pos=${lng}&city_id=${cityid}&deviceToken=${deviceid}&deviceId=${deviceid}&channel=wx_xcx&mpChannel=wx_xcx&platform=5.0.0&platCode=mini&appVersion=5.0.0&appName=paidaojia&deviceModel=appmodel&xcxVersion=9.2.0&isNeedDealError=true&business=djgyzhuli&functionId=task%2Ffinished&body=%7B%22modelId%22%3A%22M10007%22%2C%22taskType%22%3A1201%2C%22taskId%22%3A%2223eee1c043c01bc%22%2C%22plateCode%22%3A5%2C%22assistTargetPin%22%3A%22${scode.split('@')[0]}%22%2C%22uniqueId%22%3A%22${scode.split('@')[1]}%22%7D`, ``);
             $.http.get(option).then(response => {
                 let data = JSON.parse(response.body);
-                console.log('\n【助力】:' + data.msg);
+                //console.log('\n【助力】:' + data.msg);
                 resolve();
             })
         } catch (error) {
@@ -339,15 +339,15 @@ async function treeInfo() {
                     console.log('\n【果树信息】:' + data.result.activityInfoResponse.fruitName + ',还需浇水' + data.result.activityInfoResponse.curStageLeftProcess + '次' + data.result.activityInfoResponse.stageName + ',还剩' + data.result.userResponse.waterBalance + '滴水');
 
                     if (data.result.activityInfoResponse.curStageLeftProcess == 0 && treeInfoTimes) {
-                        $.notify(nickname, '京东到家果园' + data.result.activityInfoResponse.fruitName + '已成熟,快去收取!', '');
+                        $.notify('京东到家果园【' + nickname + '】', '京东到家果园' + data.result.activityInfoResponse.fruitName + '已成熟,快去收取!', '');
                         if ($.env.isNode && `${isNotify}` == 'true') {
-                            await notify.sendNotify(nickname, '京东到家果园' + data.result.activityInfoResponse.fruitName + '已成熟,快去收取!');
+                            await notify.sendNotify('京东到家果园【' + nickname + '】', '京东到家果园' + data.result.activityInfoResponse.fruitName + '已成熟,快去收取!');
                         }
                     }
                     if (data.result.activityInfoResponse.curStageLeftProcess > 0 && treeInfoTimes) {
-                        $.notify(nickname, '\n【果树信息】:' + data.result.activityInfoResponse.fruitName + ',还需浇水' + data.result.activityInfoResponse.curStageLeftProcess + '次' + data.result.activityInfoResponse.stageName + ',还剩' + data.result.userResponse.waterBalance + '滴水', '');
+                        $.notify('京东到家果园【' + nickname + '】', '【果树信息】:' + data.result.activityInfoResponse.fruitName + ',还需浇水' + data.result.activityInfoResponse.curStageLeftProcess + '次' + data.result.activityInfoResponse.stageName + ',还剩' + data.result.userResponse.waterBalance + '滴水', '');
                         if ($.env.isNode && `${isNotify}` == 'true') {
-                            await notify.sendNotify(nickname, '\n【果树信息】:' + data.result.activityInfoResponse.fruitName + ',还需浇水' + data.result.activityInfoResponse.curStageLeftProcess + '次' + data.result.activityInfoResponse.stageName + ',还剩' + data.result.userResponse.waterBalance + '滴水');
+                            await notify.sendNotify('京东到家果园【' + nickname + '】', '【果树信息】:' + data.result.activityInfoResponse.fruitName + ',还需浇水' + data.result.activityInfoResponse.curStageLeftProcess + '次' + data.result.activityInfoResponse.stageName + ',还剩' + data.result.userResponse.waterBalance + '滴水');
                         }
                     }
                 }
