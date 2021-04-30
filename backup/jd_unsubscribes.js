@@ -12,7 +12,7 @@
 55 23 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_unsubscribe.js, tag=取关京东店铺商品, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
 ===========Loon============
 [Script]
-cron "7 8 * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_unsubscribe.js,tag=取关京东店铺商品
+cron "4 8 * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_unsubscribe.js,tag=取关京东店铺商品
 ============Surge=============
 取关京东店铺商品 = type=cron,cronexp="55 23 * * *",wake-system=1,timeout=3600,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_unsubscribe.js
 ===========小火箭========
