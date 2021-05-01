@@ -20,7 +20,7 @@ function sj(){
 #apk add nodejs-current
 #转换win换行符-Linux
 dos2unix /scripts/docker/merged_list_file.sh
-
+git config pull.ff false
 
 function main(){
     # 首次运行时拷贝docker目录下文件
