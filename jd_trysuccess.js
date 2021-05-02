@@ -9,7 +9,7 @@
 [task_local]
 # 取关京东店铺商品，请在 boxjs 修改取消关注店铺数量
 5 10 * * * https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_unsubscribe.js, tag=取关京东店铺商品, enabled=true
-
+cron "2 8,21 * * *" script-path=https://github.com/acoolbook/scripts/edit/main/jd_dpqd1.js, tag=店铺签到
 # 京东价格保护
 30 10 * * * https://raw.githubusercontent.com/ZCY01/daily_scripts/main/jd/jd_try.js, tag=京东试用, img-url=https://raw.githubusercontent.com/ZCY01/img/master/jdtryv1.png, enabled=true
  */
@@ -21,11 +21,11 @@ let cookiesArr = [],
 	notify
 const selfdomain = 'https://try.m.jd.com'
 let allGoodList = []
-
+let allmessage = ''
 // default params
 $.pageSize = 12
 let cidsList = ["钟表奢品"]
-let typeList = ["普通试用"]
+let typeList = ["普通试用", "闪电试用"]
 let goodFilters = "教程后膜@贝尔思力@神皂@美少女@英语@俄语@四级@六级@在线@阴道炎@宫颈@延时@糜烂@早早孕@延时喷剂@自慰@震动@振动@跳蛋@增长@增时".split('@')
 let minPrice = 6.6
 
@@ -61,6 +61,7 @@ const typeMap = {
 		})
 		return
 	}
+
 	for (let i = 0; i < cookiesArr.length; i++) {
 		if (cookiesArr[i]) {
 			cookie = cookiesArr[i];
@@ -96,15 +97,17 @@ const typeMap = {
 			$.totalGoods = $.goodList.length
 			//await tryGoodList()
 			await getSuccessList()
-
-			await showMsg()
+			//await getallMessage()
+			//
 		}
 	}
+	await showMsg()
 })()
 .catch((e) => {
 	console.log(`❗️ ${$.name} 运行错误！\n${e}`)
 	if (eval(jdDebug)) $.msg($.name, ``, `${e}`)
 }).finally(() => $.done())
+
 
 function requireConfig() {
 	return new Promise(resolve => {
@@ -240,7 +243,14 @@ async function filterGoodList() {
 }
 
 
-
+/*按双属性排序样板
+async function sortBy(field1,field2) {
+	return function(a,b) {
+		if (a.field1 == b.field1) return b.field2 - a.field2
+		return b.field1 - a.field1
+	}
+}
+*/
 
 async function getApplyStateByActivityIds() {
 	function opt(ids) {
@@ -422,6 +432,7 @@ async function getSuccessList() {
 						})
 						$.successList.forEach(function(v){ $.successListb.push(v.trialName);})	//试用名称
 						$.successListc=$.successListb.map((e,i)=>{return [e,$.successListaa[i]]})
+						allmessage += `京东账号${$.index} ${$.nickname || $.UserName}\n🎉  ${$.successList.length}个商品待领取🤩\n🎉为：${$.successListc }${$.index !== cookiesArr.length ? '\n\n' : '\n\n'}`
 						//$.successListb = data.map(function (item) {
 						//	return item.trialName
 						//})
@@ -435,18 +446,21 @@ async function getSuccessList() {
 				resolve()
 			}
 		})
+		
 	})
 }
 
+    
+
 async function showMsg() {
 	
-	let message = `京东账号${$.index} ${$.nickname || $.UserName}\n🎉  ${$.successList.length}个商品待领取🤩\n🎉为：${$.successListc  }`
+	//let message = `京东账号${$.index} ${$.nickname || $.UserName}\n🎉  ${$.successList.length}个商品待领取🤩\n🎉为：${$.successListc}`
 	if (!jdNotify || jdNotify === 'false') {
-		$.msg($.name, ``, message, {
+		$.msg($.name, ``, allmessage, {
 			"open-url": 'https://try.m.jd.com/user'
 		})
 		if($.isNode()){
-			await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickname}`, message)
+			await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickname}`, allmessage)
 		}
 	} else {
 		console.log(message)
