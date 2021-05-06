@@ -19,12 +19,12 @@ function sj(){
 #echo "3 0,6 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_dreamFactory.js >> /scripts/logs/jd_dreamFactory.log 2>&1" >> /scripts/docker/merged_list_file.sh
 echo "20 2-23/7 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/sj_jd_mc.js >> /scripts/logs/sj_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
 echo "40 4-23/7 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/sj_jd_mc.js >> /scripts/logs/sj_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
-
+sed -i 's/jOkIZzWCgGa9NfPuHBSx1A/AkOULcXbUA_8EAPbYLLMgg/g' /scripts/jd_speed_redpocke.js
 
 #apk add nodejs-current
 #转换win换行符-Linux
 dos2unix /scripts/docker/merged_list_file.sh
-git config pull.ff false
+#git config pull.ff false
 
 function main(){
     # 首次运行时拷贝docker目录下文件
