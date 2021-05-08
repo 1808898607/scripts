@@ -11,7 +11,7 @@
 25 8,12 6-11 5 * https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_oppo.js, tag=刺客567之寻宝,  enabled=true
 ================Loon==============
 [Script]
-cron "3 0,8,13,20 6-11 5 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_oppo.js,tag=刺客567之寻宝
+cron "1 0,8,13,20 6-11 5 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_oppo.js,tag=刺客567之寻宝
 ===============Surge=================
 刺客567之寻宝 = type=cron,cronexp="25 8,12 6-11 5 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_oppo.js
 ============小火箭=========
