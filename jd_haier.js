@@ -9,7 +9,7 @@
 1 8 7-31 5 * https://raw.githubusercontent.com/monk-coder/dust/dust/car/adolf_haier.js, tag=海尔_欢乐大逃亡,  enabled=true
 ================Loon==============
 [Script]
-cron "15 8 7-31 5 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/car/adolf_haier.js,tag=海尔_欢乐大逃亡
+cron "15 0 7-31 5 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/car/adolf_haier.js,tag=海尔_欢乐大逃亡
 ===============Surge=================
 海尔_欢乐大逃亡 = type=cron,cronexp="15 8 7-31 5 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/car/adolf_haier.js
 ============小火箭=========
