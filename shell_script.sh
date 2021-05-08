@@ -17,9 +17,12 @@ function sj(){
 }
 
 #echo "3 0,6 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_dreamFactory.js >> /scripts/logs/jd_dreamFactory.log 2>&1" >> /scripts/docker/merged_list_file.sh
-echo "20 2-23/7 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/sj_jd_mc.js >> /scripts/logs/sj_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
-echo "40 4-23/7 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/sj_jd_mc.js >> /scripts/logs/sj_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
-sed -i 's/jOkIZzWCgGa9NfPuHBSx1A/AkOULcXbUA_8EAPbYLLMgg/g' /scripts/jd_speed_redpocke.js
+echo "10 2,15 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/sj_jd_mc.js >> /scripts/logs/sj_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
+echo "20 4,17 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/sj_jd_mc.js >> /scripts/logs/sj_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
+echo "30 6,19 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/sj_jd_mc.js >> /scripts/logs/sj_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
+echo "40 8,21 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/sj_jd_mc.js >> /scripts/logs/sj_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
+echo "50 10,23 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/sj_jd_mc.js >> /scripts/logs/sj_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
+#sed -i 's/jOkIZzWCgGa9NfPuHBSx1A/AkOULcXbUA_8EAPbYLLMgg/g' /scripts/jd_speed_redpocke.js
 
 #apk add nodejs-current
 #转换win换行符-Linux
