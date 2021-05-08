@@ -122,7 +122,6 @@
 14,46 * * * * node /scripts/jd_health_collect.js >> /scripts/logs/jd_health_collect.log 2>&1
 # 幸运大转盘
 15 8,22 * * * node /scripts/jd_market_lottery.js >> /scripts/logs/jd_market_lottery.log 2>&1
-
 # 津贴                                                                                                                
 1 0,8,23 * * * node /scripts/jd_jin_tie.js >> /scripts/logs/jd_jin_tie.log 2>&1 
 #test
