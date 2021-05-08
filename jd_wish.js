@@ -9,7 +9,7 @@
 10 10,15 8-9 5 * https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_wish.js, tag=众筹许愿池, enabled=true
 =====================================Loon================================
 [Script]
-cron "2 9,15,21 8-9 5 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_wish.js,tag=众筹许愿池
+cron "2 0,21 8-9 5 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_wish.js,tag=众筹许愿池
 ======================================Surge==========================
 众筹许愿池 = type=cron,cronexp="10 10,15 8-9 5 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_wish.js
 ====================================小火箭=============================
