@@ -11,7 +11,7 @@
 ============Quantumultx===============
 [task_local]
 #有机牧场
-cron "0 0-23/7 * 4-7 *" script-path=https://github.com/acoolbook/scripts/main/jd_mc.js,tag=有机牧场
+cron "0 0,13 * 4-7 *" script-path=https://github.com/acoolbook/scripts/main/jd_mc.js,tag=有机牧场
 */
 const $ = new Env('有机牧场');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
