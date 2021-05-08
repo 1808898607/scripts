@@ -28,6 +28,7 @@ echo "50 10,23 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/sj_jd_
 #转换win换行符-Linux
 dos2unix /scripts/docker/merged_list_file.sh
 #git config pull.ff false
+git config pull.rebase false
 
 function main(){
     # 首次运行时拷贝docker目录下文件
