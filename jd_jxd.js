@@ -16,7 +16,7 @@ docker用户推荐修改默认cron，避免冲垮服务器
 
 ================Loon==============
 [Script]
-cron "10 8,15,18,20 * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_jxd.js, tag=京小兑
+cron "10 8,15,18,20,23 * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_jxd.js, tag=京小兑
 
 ===============Surge=================
 京小兑 = type=cron,cronexp="40 8,16,20 * * *",wake-system=1,timeout=3600,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_jxd.js
