@@ -123,6 +123,7 @@
 1 0,8,23 * * * node /scripts/jd_jin_tie.js >> /scripts/logs/jd_jin_tie.log 2>&1 
 #龙猪猪红包雨
 4 0 * * * node /scripts/sj_jd_redrainlzz.js >> /scripts/logs/sj_jd_redrainlzz.log 2>&1
+4 0 * * * node /scripts/sj_jd_redrainme.js >> /scripts/logs/sj_jd_redrainlme.log 2>&1
 #3 0,23 * * * node /scripts/jd_tcl.js >> /scripts/logs/jd_tcl.log 2>&1
 #3 0,23 * * * node /scripts/jd_tcl.js >> /scripts/logs/jd_tcl.log 2>&1
 #3 0,23 * * * node /scripts/jd_tcl.js >> /scripts/logs/jd_tcl.log 2>&1
