@@ -15,7 +15,7 @@ function sj(){
         test -z "$jsnamecron" || echo "$jsnamecron node /scripts/sj_${jsname##*/} >> /scripts/logs/sj_${jsname##*/}.log 2>&1" >> /scripts/docker/merged_list_file.sh
     done
 }
-cp /acoolbook/jddj_cookie.js /scripts/
+cp /acoolbook/jddj_cookie.js /scripts/jddj_cookie.js
 #echo "3 0,6 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_dreamFactory.js >> /scripts/logs/jd_dreamFactory.log 2>&1" >> /scripts/docker/merged_list_file.sh
 echo "10 2,15 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/sj_jd_mc.js >> /scripts/logs/sj_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
 echo "20 4,17 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/sj_jd_mc.js >> /scripts/logs/sj_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
