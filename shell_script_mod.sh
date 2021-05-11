@@ -16,9 +16,7 @@ function sj(){
     done
 }
 
-
-echo "10 2,15 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_mc.js >> /scripts/logs/jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
-
+3echo "10 2,15 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_mc.js >> /scripts/logs/jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
 
 #apk add nodejs-current
 #转换win换行符-Linux
