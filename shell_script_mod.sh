@@ -14,7 +14,7 @@ function hh(){
 echo "10 2,15 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/sj_jd_mc.js >> /scripts/logs/sj_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
 
 
-#apk add nodejs-current
+apk add nodejs-current
 #转换win换行符-Linux
 dos2unix /scripts/docker/merged_list_file.sh
 #git config pull.ff false
