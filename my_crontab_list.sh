@@ -53,9 +53,9 @@
 # 京东抽奖机
 0 0,12,23 * * * node /scripts/jd_lotteryMachine.js >> /scripts/logs/jd_lotteryMachine.log 2>&1
 # 京东排行榜
-11 8,9 * * * node /scripts/jd_rankingList.js >> /scripts/logs/jd_rankingList.log 2>&1
+11 8,9,15 * * * node /scripts/jd_rankingList.js >> /scripts/logs/jd_rankingList.log 2>&1
 # 天天提鹅
-16 * * * * node /scripts/jd_daily_egg.js >> /scripts/logs/jd_daily_egg.log 2>&1
+26 * * * * node /scripts/jd_daily_egg.js >> /scripts/logs/jd_daily_egg.log 2>&1
 # 金融养猪
 59 0-23/6 * * * node /scripts/jd_pigPet.js >> /scripts/logs/jd_pigPet.log 2>&1
 # 点点券
@@ -64,13 +64,13 @@
 26 0-5/1,8-23/1 * * * node /scripts/jd_dreamFactory.js >> /scripts/logs/jd_dreamFactory.log 2>&1
 52 23 * * * node /scripts/jd_dreamFactory.js >> /scripts/logs/jd_dreamFactory.log 2>&1
 # 东东小窝
-36 6,23 * * * node /scripts/jd_small_home.js >> /scripts/logs/jd_small_home.log 2>&1
+36 6,22 * * * node /scripts/jd_small_home.js >> /scripts/logs/jd_small_home.log 2>&1
 # 东东工厂
-56 * * * * node /scripts/jd_jdfactory.js >> /scripts/logs/jd_jdfactory.log 2>&1
+46 * * * * node /scripts/jd_jdfactory.js >> /scripts/logs/jd_jdfactory.log 2>&1
 # 赚京豆(微信小程序)
 1 0,17,22 * * * node /scripts/jd_syj.js >> /scripts/logs/jd_syj.log 2>&1
 # 京东快递签到
-22 1 * * * node /scripts/jd_kd.js >> /scripts/logs/jd_kd.log 2>&1
+22 1,18 * * * node /scripts/jd_kd.js >> /scripts/logs/jd_kd.log 2>&1
 # 京东汽车(签到满500赛点可兑换500京豆)
 0 0 * * * node /scripts/jd_car.js >> /scripts/logs/jd_car.log 2>&1
 # 领京豆额外奖励(每日可获得3京豆)
@@ -82,7 +82,7 @@
 # 京东汽车旅程赛点兑换金豆
 #0 0 * * * node /scripts/jd_car_exchange.js >> /scripts/logs/jd_car_exchange.log 2>&1
 # 导到所有互助码
-11 7 * * * node /scripts/jd_get_share_code.js >> /scripts/logs/jd_get_share_code.log 2>&1
+11 7,19 * * * node /scripts/jd_get_share_code.js >> /scripts/logs/jd_get_share_code.log 2>&1
 # 口袋书店
 23 7,12,19 * * * node /scripts/jd_bookshop.js >> /scripts/logs/jd_bookshop.log 2>&1
 # 京喜农场
@@ -90,11 +90,11 @@
 # 签到领现金
 5 */4,23 * * * node /scripts/jd_cash.js >> /scripts/logs/jd_cash.log 2>&1
 # 京喜app签到
-14 7 * * * node /scripts/jx_sign.js >> /scripts/logs/jx_sign.log 2>&1
+14 7,19 * * * node /scripts/jx_sign.js >> /scripts/logs/jx_sign.log 2>&1
 # 闪购盲盒
 13 10,20 * * * node /scripts/jd_sgmh.js >> /scripts/logs/jd_sgmh.log 2>&1
 # 京东秒秒币
-3 6 * * * node /scripts/jd_ms.js >> /scripts/logs/jd_ms.log 2>&1
+3 6,18 * * * node /scripts/jd_ms.js >> /scripts/logs/jd_ms.log 2>&1
 #美丽研究院
 #21 7,12,19 * * * node /scripts/jd_beauty.js >> /scripts/logs/jd_beauty.log 2>&1
 #京东保价
