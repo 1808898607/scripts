@@ -15,8 +15,8 @@ cron "11 0 * * *" script-path=https://raw.githubusercontent.com/yangtingxiao/Qua
  */
 const $ = new Env('京东抽奖机');
 const STRSPLIT = "|";
-const needSum = true;            //是否需要显示汇总
-const printDetail = true;        //是否显示出参详情
+const needSum = false;            //是否需要显示汇总
+const printDetail = false;        //是否显示出参详情
 const appIdArr = ['1EFRRxA','1EFRQwA','1EFRQw64','1EFRXxg','1EFVRww','1EFRYxA','1EFRZwA','1EFRZwQ','1EFRYwA']
 const shareCodeArr = ['P04z54XCjVWmIa5m9cZ2f433tIlJz4X2kfk']
 const homeDataFunPrefixArr = ['interact_template','interact_template','','','','','','','','','','','','','','','','interact_template','interact_template']
