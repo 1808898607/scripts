@@ -14,7 +14,7 @@ let lng = '114.' + Math.round(Math.random() * (99999 - 10000) + 10000);
 let cityid = Math.round(Math.random() * (1500 - 1000) + 1000);
 !(async () => {
     if (cookies.length == 0) {
-        if ($.env.isNode) { delete require.cache['./sj_jddj_cookie.js']; cookies = require('./jddj_cookie.js') }
+        if ($.env.isNode) { delete require.cache['./sj_jddj_cookie.js']; cookies = require('./sj_jddj_cookie.js') }
         else {
             let ckstr = $.read('#jddj_cookies');
             if (!!ckstr) {
