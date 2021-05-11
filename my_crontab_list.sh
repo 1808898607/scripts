@@ -15,7 +15,8 @@
 
 #5G超级盲盒 活动时间：2021-03-19到2021-04-30
 6 0,1-23/4 * * * node /scripts/jd_mohe.js >> /scripts/logs/jd_mohe.log 2>&1
-
+#3 0,23 * * * node /scripts/jd_tcl.js >> /scripts/logs/jd_tcl.log 2>&1
+#3 0,23 * * * node /scripts/jd_tcl.js >> /scripts/logs/jd_tcl.log 2>&1
 ##############长期活动##############
 # 签到
 5 0,17 * * * cd /scripts && node jd_bean_sign.js >> /scripts/logs/jd_bean_sign.log 2>&1
@@ -124,6 +125,7 @@
 #龙猪猪红包雨
 4 0 * * * node /scripts/sj_jd_redrainlzz.js >> /scripts/logs/sj_jd_redrainlzz.log 2>&1
 4 0 * * * node /scripts/sj_jd_redrainme.js >> /scripts/logs/sj_jd_redrainlme.log 2>&1
+
 #3 0,23 * * * node /scripts/jd_tcl.js >> /scripts/logs/jd_tcl.log 2>&1
 #3 0,23 * * * node /scripts/jd_tcl.js >> /scripts/logs/jd_tcl.log 2>&1
 #3 0,23 * * * node /scripts/jd_tcl.js >> /scripts/logs/jd_tcl.log 2>&1
