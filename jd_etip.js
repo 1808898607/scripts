@@ -9,7 +9,7 @@
 15 8 9-13 5 * https://raw.githubusercontent.com/monk-coder/dust/dust/car/adolf_ETIP.js, tag=探秘无限星空,  enabled=true
 ================Loon==============
 [Script]
-cron "5 0,7,21 9-13 5 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/car/adolf_ETIP.js,tag=探秘无限星空
+cron "5 0,7 9-13 5 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/car/adolf_ETIP.js,tag=探秘无限星空
 ===============Surge=================
 探秘无限星空 = type=cron,cronexp="15 8 9-13 5 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/car/adolf_ETIP.js
 ============小火箭=========
