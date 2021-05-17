@@ -9,7 +9,7 @@
 15 8,13,18 17-31 5 * https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_pk.js, tag=京享值PK,  enabled=true
 ================Loon==============
 [Script]
-cron "7 0,6,13,18,22 17-31 5 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_pk.js,tag=京享值PK
+cron "7 0-23/3 17-31 5 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_pk.js,tag=京享值PK
 ===============Surge=================
 京享值PK = type=cron,cronexp="15 8,13,18 17-31 5 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_pk.js
 ============小火箭=========
