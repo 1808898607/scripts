@@ -17,7 +17,7 @@ cron "0 0-23/1 * * *" script-path=https://raw.githubusercontent.com/nianyuguai/l
 ============小火箭=========
  整点京豆雨= type=cron,script-path=https://raw.githubusercontent.com/nianyuguai/longzhuzhu/main/qx/jd_super_redrain.js, cronexpr="1 0-23/1 * * *",timeout=200, enable=true
  */
-const $ = new Env('整点京豆雨');
+const $ = new Env('整点京豆雨ME');
 let allMessage = '';
 let bodyList = {
     '20': {
