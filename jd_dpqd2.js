@@ -1,4 +1,10 @@
-const $ = new Env('店铺签到');
+/*
+店铺签到，各类店铺签到，有新的店铺直接添加token即可
+搬运cui521大佬脚本，请勿外传！！！
+[Script]
+cron "36 1,17 * * *" script-path=https://github.com/acoolbook/scripts/edit/main/jd_dpqd1.js, tag=店铺签到
+*/
+const $ = new Env('店铺签到2');
 
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
