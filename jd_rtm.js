@@ -14,7 +14,7 @@
 20 9 20-31 5 * https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_martin.js, tag=人头马x博朗,  enabled=true
 ================Loon==============
 [Script]
-cron "20  20-31 5 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_martin.js,tag=人头马x博朗
+cron "13 0,8 20-31 5 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_martin.js,tag=人头马x博朗
 ===============Surge=================
 人头马x博朗 = type=cron,cronexp="20 9 20-31 5 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_martin.js
 ============小火箭=========
