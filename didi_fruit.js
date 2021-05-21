@@ -9,8 +9,8 @@ docker环境变量名:DD_TOKEN,多账号换行或英文逗号(,)隔开
 */
 const API_HOST = 'https://bosp-api.xiaojukeji.com/';
 const REWARD_API_HOST = 'https://rewards.xiaojukeji.com/loyalty_credit/bonus/';
-$.showLog = $.getdata('didi_showLog') ? $.getdata('didi_showLog') === 'true' : false;
-$.didiLottery = $.getdata('didi_lottery') ? $.getdata('didi_lottery') === 'true' : false;
+//$.showLog = $.getdata('didi_showLog') ? $.getdata('didi_showLog') === 'true' : false;
+//$.didiLottery = $.getdata('didi_lottery') ? $.getdata('didi_lottery') === 'true' : false;
 $.token = $.isNode() ? process.env.didi_token || "" : "";//$.getdata('didi_token') || '';
 $.cityId = $.isNode() ? process.env.didi_city_id || "" : "";//$.getdata('didi_city_id') || '';
 $.lid = $.getdata('didi_lid');
