@@ -8,8 +8,9 @@ docker环境变量名:DD_TOKEN,多账号换行或英文逗号(,)隔开
 10 0,8,12,18 * * * https://raw.githubusercontent.com/passerby-b/didi_fruit/main/dd_fruit.js
 */
 
+//let tokens = $.isNode() ? process.env.didi_token || "" : "";//$.getdata('didi_token') || '';
 let tokens = $.isNode() ? process.env.didi_token || "" : "";//$.getdata('didi_token') || '';
-
+//$.cityId = $.isNode() ? process.env.didi_city_id || "" : "";//$.getdata('didi_city_id') || '';
 
 const $ = new API("dd_fruit");
 try {
