@@ -11,7 +11,7 @@
 28 9 18-26 5 * https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_urge.js, tag=坐等更新,  enabled=true
 ================Loon==============
 [Script]
-cron "28 9 18-26 5 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_urge.js,tag=坐等更新
+cron "6 0,8 18-26 5 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_urge.js,tag=坐等更新
 ===============Surge=================
 坐等更新 = type=cron,cronexp="28 9 18-26 5 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_urge.js
 ============小火箭=========
