@@ -24,7 +24,7 @@
 12 0 19-24 3 * https://raw.githubusercontent.com/i-chenzhe/qx/main/z_city_cash.js, tag=城城分现金, enabled=true
 ================Loon==============
 [Script]
-cron "12 0 19-24 3 * " script-path=https://raw.githubusercontent.com/i-chenzhe/qx/main/z_city_cash.js, tag=城城分现金
+cron "3 0,12,18 * 5-6 * " script-path=https://raw.githubusercontent.com/i-chenzhe/qx/main/z_city_cash.js, tag=城城分现金
 ===============Surge=================
 城城分现金 = type=cron,cronexp="12 0 19-24 3 * ",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/i-chenzhe/qx/main/z_city_cash.js
 ============小火箭=========
