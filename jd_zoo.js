@@ -17,7 +17,7 @@ const $ = new Env('动物联萌');
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 //IOS等用户直接用NobyDa的jd cookie
-let cookiesArr = [], cookie = '',secretp = '',shareCodeList = [];
+let cookiesArr = [], cookie = '',secretp = '',shareCodeList = [ZXTKT0225KkcRBgY9gDXIEvyxfdfIgFjRWn6-7zx55awQ,ZXTKT0225KkcR0tL_VDTdkv3kKUCdgFjRWn6-7zx55awQ,ZXTKT0225KkcR08QpACBcUv3l6ICfAFjRWn6-7zx55awQ,ZXTKT0205KkcA2Bepg-rQl6swo58FjRWn6-7zx55awQ,ZXTKT010xvx7SR8e_QFjRWn6-7zx55awQ];
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
     cookiesArr.push(jdCookieNode[item])
