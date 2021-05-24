@@ -17,23 +17,14 @@ const $ = new Env('动物联萌');
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 //IOS等用户直接用NobyDa的jd cookie
-let cookiesArr = [], cookie = '',secretp = '',shareCodeList = ['ZXTKT0225KkcRBgY9gDXIEvyxfdfIgFjRWn6-7zx55awQ','ZXTKT0225KkcR0tL_VDTdkv3kKUCdgFjRWn6-7zx55awQ','ZXTKT0225KkcR08QpACBcUv3l6ICfAFjRWn6-7zx55awQ','ZXTKT0205KkcA2Bepg-rQl6swo58FjRWn6-7zx55awQ','ZXTKT010xvx7SR8e_QFjRWn6-7zx55awQ'];
-if ($.isNode()) {
-  Object.keys(jdCookieNode).forEach((item) => {
-    cookiesArr.push(jdCookieNode[item])
-  })
-} else {
-  cookiesArr.push($.getdata('CookieJD'));
-  cookiesArr.push($.getdata('CookieJD2'));
-}
-
+let cookiesArr = [], cookie = '',secretp = '',shareCodeList = [];
 const JD_API_HOST = `https://api.m.jd.com/client.action?functionId=`;
 !(async () => {
+  await requireConfig()
   if (!cookiesArr[0]) {
     $.msg($.name, '【提示】请先获取cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/', {"open-url": "https://bean.m.jd.com/"});
     return;
   }
-
   for (let i = 0; i < cookiesArr.length; i++) {
     cookie = cookiesArr[i];
     if (cookie) {
@@ -652,10 +643,10 @@ function zoo_getHomeData(inviteId= "",timeout = 0) {
             //console.log('zoo_getHomeData:' + JSON.stringify(data))
             secretp = data.data.result.homeMainInfo.secretp
             await zoo_collectProduceScore();
-            await zoo_pk_getHomeData('sSKNX-MpqKOJsNu8n5raUJ3-jxczgnLh4wNbl8y9l_Js24U5k2N6iTgafi5LlHU')
+            await zoo_pk_getHomeData('sSKNX-MpqKOJsNu_mZneBluwe_DRzs1f90l6Q_p8OVxtoB-JJEErrVU4eHW7e2I')
             //await zoo_pk_assistGroup()
             if (data.data.result.homeMainInfo.raiseInfo.buttonStatus === 1 ) await zoo_raise(1000)
-            await zoo_getHomeData('ZXTKT0225KkcR08QpACBcUv3l6ICfAFjRWn6-7zx55awQ');
+            await zoo_getHomeData('ZXTKT0225KkcR0tL_VDTdkv3kKUCdgFjRWn6-7zx55awQ');
             //await zoo_getTaskDetail("","app")
             await zoo_getTaskDetail()
           } else {
@@ -824,7 +815,7 @@ function zoo_pk_getHomeData(body = "",timeout = 0) {
       $.post(url, async (err, resp, data) => {
         try {
           if (body !== "") {
-            await $.getScript("https://raw.githubusercontent.com/acoolbook/scripts/main/backup/jd_zoo.txt").then((text) => (shareCodeList = text.split('\n')))
+            await $.getScript("https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/memo/jd_zooShareCode.txt").then((text) => (shareCodeList = text.split('\n')))
             for (let i in shareCodeList) {
               if (shareCodeList[i]) await zoo_pk_assistGroup(shareCodeList[i]);
             }
@@ -856,6 +847,31 @@ function randomWord(randomFlag, min, max){
     str += arr[pos];
   }
   return str;
+}
+
+function requireConfig() {
+  return new Promise(resolve => {
+    //Node.js用户请在jdCookie.js处填写京东ck;
+    const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
+    //IOS等用户直接用NobyDa的jd cookie
+    if ($.isNode()) {
+      Object.keys(jdCookieNode).forEach((item) => {
+        if (jdCookieNode[item]) {
+          cookiesArr.push(jdCookieNode[item])
+        }
+      })
+    } else {
+      let cookiesData = $.getdata('CookiesJD') || "[]";
+      cookiesData = jsonParse(cookiesData);
+      cookiesArr = cookiesData.map(item => item.cookie);
+      cookiesArr.reverse();
+      cookiesArr.push(...[$.getdata('CookieJD2'), $.getdata('CookieJD')]);
+      cookiesArr.reverse();
+      cookiesArr = cookiesArr.filter(item => item !== "" && item !== null && item !== undefined);
+    }
+    console.log(`共${cookiesArr.length}个京东账号\n`);
+    resolve()
+  })
 }
 
 function minusByByte(t, n) {
