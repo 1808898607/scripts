@@ -655,7 +655,7 @@ function zoo_getHomeData(inviteId= "",timeout = 0) {
             await zoo_pk_getHomeData('sSKNX-MpqKOJsNu8n5raUJ3-jxczgnLh4wNbl8y9l_Js24U5k2N6iTgafi5LlHU')
             //await zoo_pk_assistGroup()
             if (data.data.result.homeMainInfo.raiseInfo.buttonStatus === 1 ) await zoo_raise(1000)
-            await zoo_getHomeData('ZXTKT0225KkcRBgY9gDXIEvyxfdfIgFjRWn6-7zx55awQ');
+            await zoo_getHomeData('ZXTKT0225KkcR0tL_VDTdkv3kKUCdgFjRWn6-7zx55awQ');
             //await zoo_getTaskDetail("","app")
             await zoo_getTaskDetail()
           } else {
