@@ -6,7 +6,8 @@
 //boxjs订阅地址:https://gitee.com/passerby-b/javascript/raw/master/JD/passerby-b.boxjs.json
 //cron "10-51/5 * * * *" script-path=https://github.com/717785320/JDDJ/blob/main/jddj_plantBeans.js
 
-const $ = new API("djgy_collectWater");
+const $ = new API("jddj_fruit_collectWater");
+let ckPath = './jddj_cookie.js';//ck路径,环境变量:JDDJ_CKPATH
 let cookies = [];
 let thiscookie = '', deviceid = '';
 let lat = '30.' + Math.round(Math.random() * (99999 - 10000) + 10000);
@@ -14,7 +15,10 @@ let lng = '114.' + Math.round(Math.random() * (99999 - 10000) + 10000);
 let cityid = Math.round(Math.random() * (1500 - 1000) + 1000);
 !(async () => {
     if (cookies.length == 0) {
-        if ($.env.isNode) { delete require.cache['./jddj_cookie.js']; cookies = require('./jddj_cookie.js') }
+        if ($.env.isNode) {
+            if (process.env.JDDJ_CKPATH) ckPath = process.env.JDDJ_CKPATH;
+            delete require.cache[ckPath]; cookies = require(ckPath);
+        }
         else {
             let ckstr = $.read('#jddj_cookies');
             if (!!ckstr) {
