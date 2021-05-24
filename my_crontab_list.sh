@@ -17,7 +17,7 @@
 9 0,22,23 * * * node /scripts/jd_daily_lottery.js >> /scripts/logs/jd_daily_lottery.log 2>&1
 
 1 0-23/6 * * * node /scripts/jd_carnivalcity.js >> /scripts/logs/jd_carnivalcity.log 2>&1
-10 0-23/6 * * * node /scripts/jd_city.js >> /scripts/logs/jd_city.log 2>&1
+15 0-23/6 * * * node /scripts/jd_city.js >> /scripts/logs/jd_city.log 2>&1
 ##############长期活动##############
 # 签到
 4 0,17 * * * cd /scripts && node jd_bean_sign.js >> /scripts/logs/jd_bean_sign.log 2>&1
