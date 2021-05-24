@@ -14,7 +14,9 @@ https://h5.m.jd.com/babelDiy/Zeus/2H5Ng86mUJLXToEo57qWkJkjFPxw/index.html?fromNa
 [task_local]
 #金榜创造营
 0 0,13 * 5-12 * https://raw.githubusercontent.com/qqsdff/script/main/jd/jd_jbczy.js, tag=金榜创造营,  enabled=true
-
+[Script]
+cron "15 1,7,18 * * *" script-path=https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_zoo.js,tag=动物联萌
+// Surge
 修改自lxk0301大佬，侵删
  * 
  */
