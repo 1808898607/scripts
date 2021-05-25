@@ -1,6 +1,6 @@
 /*
 动物联萌 618活动
-更新时间：2021-05-25 10:18
+更新时间：2021-05-25 13:25
 做任务，收金币
 脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
 // quantumultx
@@ -9,7 +9,7 @@
 5 * * * * https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_zoo.js, tag=动物联萌, img-url=https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/image/jd.png, enabled=true
 // Loon
 [Script]
-cron "5 9-23/3 * * *" script-path=https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_zoo.js,tag=动物联萌
+cron "15 8-23/3 * * *" script-path=https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_zoo.js,tag=动物联萌
 // Surge
 动物联萌 = type=cron,cronexp=5 * * * *,wake-system=1,timeout=500,script-path=https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_zoo.js
 */
@@ -680,12 +680,12 @@ function zoo_getHomeData(inviteId= "",timeout = 0) {
             secretp = data.data.result.homeMainInfo.secretp
             await zoo_collectProduceScore();
             //await zoo_pk_doPkSkill("2");
-
             await zoo_pk_getHomeData('sSKNX-MpqKOJsNu8n5raUJ3-jxczgnLh4wNbl8y9l_Js24U5k2N6iTgafi5LlHQ')
             await zoo_pk_getHomeData('sSKNX-MpqKOJsNu_zMnRAJCWXSWJwGnbvowWVLic4WQpSlF4rGny63Y6xTETxT4')
             await zoo_pk_getHomeData('sSKNX-MpqKOJsNu_yJKIULCQ44vz4afPXuTWPiHIGYxy9BRLWe77oYSgoBSRbDA')
             await zoo_pk_getHomeData('sSKNX-MpqKOJsNv759yKX-65J2N9l__jN4dDpHlNWMV6ADtcjkCMICHzRoQb')
             await zoo_pk_getHomeData('sSKNX-MpqKOr5byxmJzRa4K6iCgCs9LmMNXpTbo')
+            await zoo_pk_getHomeData('sSKNX-MpqKOJsNu_mZneBluwe_DRzs1f90l6Q_p8OVxtoB-JJEErrVU4eHW7e2I')
             //await zoo_pk_assistGroup()
             if (data.data.result.homeMainInfo.raiseInfo.buttonStatus === 1 ) await zoo_raise(1000)
             await zoo_getHomeData('ZXTKT0225KkcRBgY9gDXIEvyxfdfIgFjRWn6-7zx55awQ');
@@ -698,7 +698,8 @@ function zoo_getHomeData(inviteId= "",timeout = 0) {
             await zoo_getHomeData('ZXTKT0225KkcRh5LpwDTJR_1kPVZdgFjRWn6-7zx55awQ');
             await zoo_getHomeData('ZXTKT0225KkcRRlL9FXeJhKgkaIOdgFjRWn6-7zx55awQ');
             await zoo_getHomeData('ZXTKT01076EkRRoR9QFjRWn6-7zx55awQ');
-            //await zoo_getTaskDetail("","app")
+            await zoo_getHomeData('ZXTKT0225KkcRx4b8lbWJU72wvZZcwFjRWn6-7zx55awQ');
+            await zoo_getTaskDetail("","app")
             await zoo_getTaskDetail()
           } else {
             return
