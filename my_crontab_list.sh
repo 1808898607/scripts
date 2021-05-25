@@ -17,7 +17,7 @@
 9 0,22,23 * * * node /scripts/jd_daily_lottery.js >> /scripts/logs/jd_daily_lottery.log 2>&1
 
 2 0-23/6 * * * node /scripts/jd_carnivalcity.js >> /scripts/logs/jd_carnivalcity.log 2>&1
-25 0-23/8 * * * node /scripts/jd_city.js >> /scripts/logs/jd_city.log 2>&1
+1 0-23/8 * * * node /scripts/jd_city.js >> /scripts/logs/jd_city.log 2>&1
 3 0-23/1 * * * node /scripts/jd_zoo.js >> /scripts/logs/jd_zoo.log 2>&1
 ##############长期活动##############
 # 签到
