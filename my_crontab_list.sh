@@ -18,6 +18,7 @@
 
 2 0-23/6 * * * node /scripts/jd_carnivalcity.js >> /scripts/logs/jd_carnivalcity.log 2>&1
 15 0-23/6 * * * node /scripts/jd_city.js >> /scripts/logs/jd_city.log 2>&1
+3 0-23/1 * * * node /scripts/jd_zoo.js >> /scripts/logs/jd_zoo.log 2>&1
 ##############长期活动##############
 # 签到
 4 0,17 * * * cd /scripts && node jd_bean_sign.js >> /scripts/logs/jd_bean_sign.log 2>&1
@@ -57,7 +58,7 @@
 # 京东排行榜
 11 8,9,15 * * * node /scripts/jd_rankingList.js >> /scripts/logs/jd_rankingList.log 2>&1
 # 天天提鹅
-26 * * * * node /scripts/jd_daily_egg.js >> /scripts/logs/jd_daily_egg.log 2>&1
+36 * * * * node /scripts/jd_daily_egg.js >> /scripts/logs/jd_daily_egg.log 2>&1
 # 金融养猪
 24 0-23/6 * * * node /scripts/jd_pigPet.js >> /scripts/logs/jd_pigPet.log 2>&1
 # 点点券
@@ -68,9 +69,9 @@
 # 东东小窝
 26 6,18，22 * * * node /scripts/jd_small_home.js >> /scripts/logs/jd_small_home.log 2>&1
 # 东东工厂
-36 * * * * node /scripts/jd_jdfactory.js >> /scripts/logs/jd_jdfactory.log 2>&1
+41 * * * * node /scripts/jd_jdfactory.js >> /scripts/logs/jd_jdfactory.log 2>&1
 # 赚京豆(微信小程序)
-1,15 0,19,22 * * * node /scripts/jd_syj.js >> /scripts/logs/jd_syj.log 2>&1
+36,56 0,19,22 * * * node /scripts/jd_syj.js >> /scripts/logs/jd_syj.log 2>&1
 # 京东快递签到
 22 1,18 * * * node /scripts/jd_kd.js >> /scripts/logs/jd_kd.log 2>&1
 # 京东汽车(签到满500赛点可兑换500京豆)
