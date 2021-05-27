@@ -24,7 +24,7 @@
 1 0-23/4 * 5,6 * https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_city_cash.js, tag=城城分现金, enabled=true
 ================Loon==============
 [Script]
-cron "16 0-23/7 * 5,6 * " script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_city_cash.js, tag=城城分现金
+cron "6 0-23/7 * 5,6 * " script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_city_cash.js, tag=城城分现金
 ===============Surge=================
 城城分现金 = type=cron,cronexp="1 0-23/4 * 5,6 * ",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_city_cash.js
 ============小火箭=========
