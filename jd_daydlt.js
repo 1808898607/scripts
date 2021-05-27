@@ -7,7 +7,7 @@
 0 0 * * * https://raw.githubusercontent.com/wulove/my_scripts/main/jd_daydlt.js, tag=天天优惠大乐透, enabled=true
 ================Loon==============
 [Script]
-cron "0 0,12 * * *" script-path=https://raw.githubusercontent.com/wulove/my_scripts/main/jd_daydlt.js,tag=天天优惠大乐透
+cron "10 8,20 * * *" script-path=https://raw.githubusercontent.com/wulove/my_scripts/main/jd_daydlt.js,tag=天天优惠大乐透
 ===============Surge=================
 天天优惠大乐透 = type=cron,cronexp="0 0 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/wulove/my_scripts/main/jd_daydlt.js
 ============小火箭=========
