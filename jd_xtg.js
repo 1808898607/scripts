@@ -11,7 +11,7 @@
 40 9-18/3 * 5,6 * https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_star.js, tag=家电星推官,  enabled=true
 ================Loon==============
 [Script]
-cron "0 0,7-21/3 * 5,6 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_star.js,tag=家电星推官
+craon "0 0,7-21/3 * 5,6 *" script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_star.js,tag=家电星推官
 ===============Surge=================
 家电星推官 = type=cron,cronexp="40 9-18/3 * 5,6 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/normal/adolf_star.js
 ============小火箭=========
