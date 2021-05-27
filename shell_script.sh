@@ -3,26 +3,26 @@
 ### 编辑docker-compose.yml文件添加: - CUSTOM_SHELL_FILE=https://raw.githubusercontent.com/monk-coder/dust/dust/shell_script_mod.sh
 #### 容器完全启动后执行 docker exec -it jd_scripts /bin/sh -c 'crontab -l' 查看目前修行的经书
 
-function jr(){
+function jx(){
     # https://github.com/monk-coder/dust
-    rm -rf /acoolbook /scripts/jr_*
+    rm -rf /acoolbook /scripts/jx_*
     git clone https://github.com/acoolbook/scripts.git /acoolbook
     cp /acoolbook/jddj_cookie.js /scripts/jddj_cookie.js
     # 拷贝脚本
-    for jsname in $(find /acoolbook -name "*.js" | grep -vE "\/backup\/"); do cp ${jsname} /scripts/jr_${jsname##*/}; done
+    for jsname in $(find /acoolbook -name "*.js" | grep -vE "\/backup\/"); do cp ${jsname} /scripts/jx_${jsname##*/}; done
     # 匹配js脚本中的cron设置定时任务
     for jsname in $(find /acoolbook -name "*.js" | grep -vE "\/backup\/"); do
         jsnamecron="$(cat $jsname | grep -oE "/?/?cron \".*\"" | cut -d\" -f2)"
-        test -z "$jsnamecron" || echo "$jsnamecron node /scripts/jr_${jsname##*/} >> /scripts/logs/jr_${jsname##*/}.log 2>&1" >> /scripts/docker/merged_list_file.sh
+        test -z "$jsnamecron" || echo "$jsnamecron node /scripts/jx_${jsname##*/} >> /scripts/logs/jx_${jsname##*/}.log 2>&1" >> /scripts/docker/merged_list_file.sh
     done
 }
 #cp /acoolbook/jddj_cookie.js /scripts/jddj_cookie.js
 #echo "3 0,6 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jd_dreamFactory.js >> /scripts/logs/jd_dreamFactory.log 2>&1" >> /scripts/docker/merged_list_file.sh
-echo "10 2,15 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jr_jd_mc.js >> /scripts/logs/jr_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
-echo "20 4,17 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jr_jd_mc.js >> /scripts/logs/jr_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
-echo "30 6,19 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jr_jd_mc.js >> /scripts/logs/jr_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
-echo "40 8,21 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jr_jd_mc.js >> /scripts/logs/jr_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
-echo "50 10,23 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jr_jd_mc.js >> /scripts/logs/jr_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
+echo "10 2,15 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jx_jd_mc.js >> /scripts/logs/jx_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
+echo "20 4,17 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jx_jd_mc.js >> /scripts/logs/jx_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
+echo "30 6,19 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jx_jd_mc.js >> /scripts/logs/jx_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
+echo "40 8,21 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jx_jd_mc.js >> /scripts/logs/jx_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
+echo "50 10,23 * * * sleep $((RANDOM % $RANDOM_DELAY_MAX)); node /scripts/jx_jd_mc.js >> /scripts/logs/jx_jd_mc.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
 #sed -i 's/jOkIZzWCgGa9NfPuHBSx1A/AkOULcXbUA_8EAPbYLLMgg/g' /scripts/jd_speed_redpocke.js
 
 #apk add nodejs-current
@@ -37,7 +37,7 @@ function main(){
     # DIY脚本执行前后信息
     a_jsnum=$(ls -l /scripts | grep -oE "^-.*js$" | wc -l)
     a_jsname=$(ls -l /scripts | grep -oE "^-.*js$" | grep -oE "[^ ]*js$")
-    jr
+    jx
     b_jsnum=$(ls -l /scripts | grep -oE "^-.*js$" | wc -l)
     b_jsname=$(ls -l /scripts | grep -oE "^-.*js$" | grep -oE "[^ ]*js$")
     # DIY脚本更新TG通知
