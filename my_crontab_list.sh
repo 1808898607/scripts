@@ -23,6 +23,7 @@
 #3 0-23/1 * * * node /scripts/jd_zoo.js >> /scripts/logs/jd_zoo.log 2>&1
 #3 0-23/1 * * * node /scripts/jd_zoo.js >> /scripts/logs/jd_zoo.log 2>&1
 0 0-23/6 * * * node /scripts/jd_xtg.js >> /scripts/logs/jd_xtg.log 2>&1
+4 0-23/8 * * * node /scripts/jd_xtg_help.js >> /scripts/logs/jd_xtg_help.log 2>&1
 ##############长期活动##############
 # 签到
 4 0,17 * * * cd /scripts && node jd_bean_sign.js >> /scripts/logs/jd_bean_sign.log 2>&1
