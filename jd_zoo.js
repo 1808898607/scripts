@@ -1,6 +1,6 @@
 /*
 动物联萌 618活动
-更新时间：2021-05-25 13:25
+更新时间：2021-05-27 09:15
 做任务，收金币
 脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
 // quantumultx
@@ -15,9 +15,9 @@ cron "15 8-23/3 * * *" script-path=https://raw.githubusercontent.com/yangtingxia
 */
 const $ = new Env('动物联萌');
 //Node.js用户请在jdCookie.js处填写京东ck;
-const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '',secretp = '',shareCodeList = [],showCode = true;
+let doPkSkill = true;  //自动放技能，不需要的改为false
 const JD_API_HOST = `https://api.m.jd.com/client.action?functionId=`;
 !(async () => {
   await requireConfig()
@@ -38,6 +38,7 @@ const JD_API_HOST = `https://api.m.jd.com/client.action?functionId=`;
         continue;
       }
       console.log('\n\n京东账号：'+merge.nickname + ' 任务开始')
+      await zoo_sign()
       await zoo_pk_getHomeData();
       await zoo_getHomeData();
       //await qryCompositeMaterials()
@@ -244,6 +245,38 @@ function zoo_pk_doPkSkill(skillType, timeout = 0){
           } else {
             console.log('技能释放失败：' + data.data.bizMsg);
           }
+        } catch (e) {
+          $.logErr(e, resp);
+        } finally {
+          resolve()
+        }
+      })
+    },timeout)
+  })
+}
+//签到
+function zoo_sign(timeout = 0){
+  return new Promise((resolve) => {
+    setTimeout( ()=>{
+      let url = {
+        url : `${JD_API_HOST}zoo_sign`,
+        headers : {
+          'Origin' : `https://wbbny.m.jd.com`,
+          'Cookie' : cookie,
+          'Connection' : `keep-alive`,
+          'Accept' : `application/json, text/plain, */*`,
+          'Host' : `api.m.jd.com`,
+          'User-Agent' : `jdapp;iPhone;9.2.0;14.1;`,
+          'Accept-Encoding' : `gzip, deflate, br`,
+          'Accept-Language' : `zh-cn`
+        },
+        body : `functionId=zoo_sign&body={}&client=wh5&clientVersion=1.0.0`
+      }
+      $.post(url, async (err, resp, data) => {
+        try {
+          //console.log(data)
+          data = JSON.parse(data);
+          console.log('签到结果：' + data.data.bizMsg);
         } catch (e) {
           $.logErr(e, resp);
         } finally {
@@ -681,24 +714,11 @@ function zoo_getHomeData(inviteId= "",timeout = 0) {
             await zoo_collectProduceScore();
             //await zoo_pk_doPkSkill("2");
             await zoo_pk_getHomeData('sSKNX-MpqKOJsNu8n5raUJ3-jxczgnLh4wNbl8y9l_Js24U5k2N6iTgafi5LlHQ')
-            await zoo_pk_getHomeData('sSKNX-MpqKOJsNu_zMnRAJCWXSWJwGnbvowWVLic4WQpSlF4rGny63Y6xTETxT4')
-            await zoo_pk_getHomeData('sSKNX-MpqKOJsNu_yJKIULCQ44vz4afPXuTWPiHIGYxy9BRLWe77oYSgoBSRbDA')
-            await zoo_pk_getHomeData('sSKNX-MpqKOJsNv759yKX-65J2N9l__jN4dDpHlNWMV6ADtcjkCMICHzRoQb')
-            await zoo_pk_getHomeData('sSKNX-MpqKOr5byxmJzRa4K6iCgCs9LmMNXpTbo')
-            await zoo_pk_getHomeData('sSKNX-MpqKOJsNu_mZneBluwe_DRzs1f90l6Q_p8OVxtoB-JJEErrVU4eHW7e2I')
+
             //await zoo_pk_assistGroup()
             if (data.data.result.homeMainInfo.raiseInfo.buttonStatus === 1 ) await zoo_raise(1000)
             await zoo_getHomeData('ZXTKT0225KkcRBgY9gDXIEvyxfdfIgFjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT0225KkcR0tL_VDTdkv3kKUCdgFjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT0225KkcR08QpACBcUv3l6ICfAFjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT0205KkcA2Bepg-rQl6swo58FjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT010xvx7SR8e_QFjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT0225KkcRhtP81DUdhmgx_QOdgFjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT0205KkcFH17pDO9fmS-8J1xFjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT0225KkcRh5LpwDTJR_1kPVZdgFjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT0225KkcRRlL9FXeJhKgkaIOdgFjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT01076EkRRoR9QFjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT0225KkcRx4b8lbWJU72wvZZcwFjRWn6-7zx55awQ');
+
             await zoo_getTaskDetail("","app")
             await zoo_getTaskDetail()
           } else {
@@ -879,7 +899,17 @@ function zoo_pk_getHomeData(body = "",timeout = 0) {
               console.log('您的队伍助力码：' + data.data.result.groupInfo.groupAssistInviteId);
               showCode = false;
             }
-            if (data.data.result.groupPkInfo.aheadFinish) return ;
+            //if (data.data.result.groupPkInfo.aheadFinish) return ;
+            if (!doPkSkill) return ;
+            if (typeof data.data.result.groupPkInfo.dayTotalValue !== "undefined") {
+              if (parseInt(data.data.result.groupPkInfo.dayTotalValue) >= parseInt(data.data.result.groupPkInfo.dayTargetSell)) return;
+            }
+            else
+            if (typeof data.data.result.groupPkInfo.nightTotalValue !== "undefined") {
+              if (parseInt(data.data.result.groupPkInfo.nightTotalValue) >= parseInt(data.data.result.groupPkInfo.nightTargetSell)) return;
+            }
+            else
+              return;
             for (let i in data.data.result.groupInfo.skillList) {
               if (data.data.result.groupInfo.skillList[i].num > 0) {
                 await zoo_pk_doPkSkill(data.data.result.groupInfo.skillList[i].code);
@@ -1063,6 +1093,7 @@ function initial() {
     merge[i].notify = "";
     merge[i].show = true;
   }
+  showCode = true;
 }
 //通知
 function msgShow() {
