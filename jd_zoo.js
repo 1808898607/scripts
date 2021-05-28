@@ -1,6 +1,6 @@
 /*
 动物联萌 618活动
-更新时间：2021-05-27 09:15
+更新时间：2021-05-28 09:30
 做任务，收金币
 脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
 // quantumultx
@@ -9,7 +9,7 @@
 5 * * * * https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_zoo.js, tag=动物联萌, img-url=https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/image/jd.png, enabled=true
 // Loon
 [Script]
-cron "15 8-23/3 * * *" script-path=https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_zoo.js,tag=动物联萌
+cron "35 8-23/3 * * *" script-path=https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_zoo.js,tag=动物联萌
 // Surge
 动物联萌 = type=cron,cronexp=5 * * * *,wake-system=1,timeout=500,script-path=https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_zoo.js
 */
@@ -39,6 +39,8 @@ const JD_API_HOST = `https://api.m.jd.com/client.action?functionId=`;
       }
       console.log('\n\n京东账号：'+merge.nickname + ' 任务开始')
       await zoo_sign()
+      console.log('加密算法解密中。暂无法使用')
+      return ;
       await zoo_pk_getHomeData();
       await zoo_getHomeData();
       //await qryCompositeMaterials()
@@ -127,7 +129,8 @@ function zoo_getTaskDetail(shopSign = "",appSign = "",timeout = 0){
                     let nonstr = randomWord(false,10)
                     let time = Date.now()
                     let key = minusByByte(nonstr.slice(0,5),String(time).slice(-5))
-                    let msg = `random=${rnd}&token=d89985df35e6a2227fd2e85fe78116d2&time=${time}&nonce_str=${nonstr}&key=${key}&is_trust=true`
+                    //let msg = `random=${rnd}&token=d89985df35e6a2227fd2e85fe78116d2&time=${time}&nonce_str=${nonstr}&key=${key}&is_trust=true`
+                    let msg = `random=${rnd}&token=MDFnc2lFaTAxMQ==.VkVbd1hRQ1BwUFFLWTtcMRFZHAASQi0vF1ZfX2ldS0IXdxdWDQALGCs6XHBZEhA5Bx4kOBgXGCoLBC4oWk4X.2d95d9ed&time=${time}&nonce_str=${nonstr}&key=${key}&is_trust=1`
                     let sign = bytesToHex(wordsToBytes(getSign(msg))).toUpperCase() //,\"random\":\"${rnd}\"
                     let taskBody = `functionId=zoo_collectScore&body={"taskId":${data.data.result.taskVos[i].taskId},"taskToken" : "${list[j].taskToken}","ss":"{\\"extraData\\":{\\"is_trust\\":true,\\"sign\\":\\"${sign}\\",\\"fpb\\":\\"\\",\\"time\\":${time},\\"encrypt\\":\\"3\\",\\"nonstr\\":\\"${nonstr}\\",\\"jj\\":\\"\\",\\"token\\":\\"d89985df35e6a2227fd2e85fe78116d2\\",\\"cf_v\\":\\"1.0.2\\",\\"client_version\\":\\"2.2.1\\",\\"buttonid\\":\\"jmdd-react-smash_62\\",\\"sceneid\\":\\"homePageh5\\"},\\"secretp\\":\\"${secretp}\\",\\"random\\":\\"${rnd}\\"}","itemId":"${list[j].itemId}","actionType":1,"shopSign":${shopSign}}&client=wh5&clientVersion=1.0.0`
                     //console.log(taskBody)
@@ -712,26 +715,10 @@ function zoo_getHomeData(inviteId= "",timeout = 0) {
             //console.log('zoo_getHomeData:' + JSON.stringify(data))
             secretp = data.data.result.homeMainInfo.secretp
             await zoo_collectProduceScore();
-
             //await zoo_pk_doPkSkill("2");
-            await zoo_pk_getHomeData('sSKNX-MpqKOJsNu8n5raUJ3-jxczgnLh4wNbl8y9l_Js24U5k2N6iTgafi5LlHQ')
-            await zoo_pk_getHomeData('sSKNX-MpqKOJsNu_zMnRAJCWXSWJwGnbvowWVLic4WQpSlF4rGny63Y6xTETxT4')
-            await zoo_pk_getHomeData('sSKNX-MpqKOJsNu_yJKIULCQ44vz4afPXuTWPiHIGYxy9BRLWe77oYSgoBSRbDA')
-            await zoo_pk_getHomeData('sSKNX-MpqKOJsNv759yKX-65J2N9l__jN4dDpHlNWMV6ADtcjkCMICHzRoQb')
-            await zoo_pk_getHomeData('sSKNX-MpqKOr5byxmJzRa4K6iCgCs9LmMNXpTbo')
             await zoo_pk_getHomeData('sSKNX-MpqKOJsNu_mZneBluwe_DRzs1f90l6Q_p8OVxtoB-JJEErrVU4eHW7e2I')
             //await zoo_pk_assistGroup()
             if (data.data.result.homeMainInfo.raiseInfo.buttonStatus === 1 ) await zoo_raise(1000)
-            await zoo_getHomeData('ZXTKT0225KkcRBgY9gDXIEvyxfdfIgFjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT0225KkcR0tL_VDTdkv3kKUCdgFjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT0225KkcR08QpACBcUv3l6ICfAFjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT0205KkcA2Bepg-rQl6swo58FjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT010xvx7SR8e_QFjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT0225KkcRhtP81DUdhmgx_QOdgFjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT0205KkcFH17pDO9fmS-8J1xFjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT0225KkcRh5LpwDTJR_1kPVZdgFjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT0225KkcRRlL9FXeJhKgkaIOdgFjRWn6-7zx55awQ');
-            await zoo_getHomeData('ZXTKT01076EkRRoR9QFjRWn6-7zx55awQ');
             await zoo_getHomeData('ZXTKT0225KkcRx4b8lbWJU72wvZZcwFjRWn6-7zx55awQ');
             await zoo_getTaskDetail("","app")
             await zoo_getTaskDetail()
@@ -993,6 +980,7 @@ function jsonParse(str) {
     }
   }
 }
+
 
 function minusByByte(t, n) {
   var e = t.length
