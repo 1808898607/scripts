@@ -18,7 +18,7 @@
 
 38 6,12 * * * node /scripts/jd_carnivalcity.js >> /scripts/logs/jd_carnivalcity.log 2>&1
 9 2,9,18 * * * node /scripts/jd_carnivalcity.js >> /scripts/logs/jd_carnivalcity.log 2>&1
-6 0-23/8,23 * * * node /scripts/jd_city.js >> /scripts/logs/jd_city.log 2>&1
+1 0-23/8,23 * * * node /scripts/jd_city.js >> /scripts/logs/jd_city.log 2>&1
 23 0-23/1 * * * node /scripts/jd_zoo.js >> /scripts/logs/jd_zoo.log 2>&1
 
 #3 0-23/1 * * * node /scripts/jd_zoo.js >> /scripts/logs/jd_zoo.log 2>&1
