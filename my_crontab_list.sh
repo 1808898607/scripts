@@ -27,6 +27,13 @@
 #星推官
 0 0-23/6 * * * node /scripts/jd_xtg.js >> /scripts/logs/jd_xtg.log 2>&1
 4 0-23/9 * * * node /scripts/jd_xtg_help.js >> /scripts/logs/jd_xtg_help.log 2>&1
+
+#金榜投票............... ...............2021-05-21...2021-12-31
+40 0,21 * * * node /scripts/jd_gold_creator.js >> /scripts/logs/jd_gold_creator.log 2>&1
+
+#..................(5.31.........)
+0 15-19/1 * 6 * node /scripts/jd_party_night.js >> /scripts/logs/jd_party_night.log 2>&1
+
 ##############长期活动##############
 # 签到
 4 0,17 * * * cd /scripts && node jd_bean_sign.js >> /scripts/logs/jd_bean_sign.log 2>&1
