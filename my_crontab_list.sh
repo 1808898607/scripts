@@ -32,7 +32,7 @@
 40 0,21 * * * node /scripts/jd_gold_creator.js >> /scripts/logs/jd_gold_creator.log 2>&1
 
 #..................(5.31.........)
-0 15-19/1 * 6 * node /scripts/jd_party_night.js >> /scripts/logs/jd_party_night.log 2>&1
+0 15-23/1 * 5 * node /scripts/jd_party_night.js >> /scripts/logs/jd_party_night.log 2>&1
 
 ##############长期活动##############
 # 签到
