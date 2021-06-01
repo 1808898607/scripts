@@ -19,7 +19,8 @@
 38 6,12 * * * node /scripts/jd_carnivalcity.js >> /scripts/logs/jd_carnivalcity.log 2>&1
 9 2,9,18 * * * node /scripts/jd_carnivalcity.js >> /scripts/logs/jd_carnivalcity.log 2>&1
 1 0-23/8,23 * * * node /scripts/jd_city.js >> /scripts/logs/jd_city.log 2>&1
-23 0-23/1 * * * node /scripts/jd_zoo.js >> /scripts/logs/jd_zoo.log 2>&1
+23 0-23/1 * 6 * node /scripts/jd_zoo.js >> /scripts/logs/jd_zoo.log 2>&1
+12,40 * * 6 * node /scripts/jd_zooCollect.js >> /scripts/logs/jd_zooCollect.log 2>&1
 
 #3 0-23/1 * * * node /scripts/jd_zoo.js >> /scripts/logs/jd_zoo.log 2>&1
 #金榜创造营
@@ -32,7 +33,7 @@
 40 0,21 * * * node /scripts/jd_gold_creator.js >> /scripts/logs/jd_gold_creator.log 2>&1
 
 #..................(5.31.........)
-0 15-23/1 * 5 * node /scripts/jd_party_night.js >> /scripts/logs/jd_party_night.log 2>&1
+#0 15-23/1 * 5 * node /scripts/jd_party_night.js >> /scripts/logs/jd_party_night.log 2>&1
 
 ##############长期活动##############
 # 签到
