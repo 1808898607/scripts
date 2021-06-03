@@ -15,7 +15,7 @@
 
 ================Loon==============
 [Script]
-cron "30 10 * * *" script-path=https://g/jd_scripts/raw/ tag=特物ZX联想
+cron "11 1 * * *" script-path=https://g/jd_scripts/raw/ tag=特物ZX联想
 
 ===============Surge=================
 特物ZX联想 = type=cron,cronexp="30 11 * * *",wake-system=1,timeout=3600,script-path=https://cdn.jsdelivr.net/gh/Wenmoux/scripts/js/superBrand.js
