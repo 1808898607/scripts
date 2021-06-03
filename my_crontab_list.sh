@@ -31,6 +31,8 @@
 
 #金榜投票............... ...............2021-05-21...2021-12-31
 40 0,21 * * * node /scripts/jd_gold_creator.js >> /scripts/logs/jd_gold_creator.log 2>&1
+#5G魔盒............(...............2021-06-2...2021-07-31)
+0 0-23/3 * 6,7 * node /scripts/jd_mohe.js >> /scripts/logs/jd_mohe.log 2>&1
 
 #..................(5.31.........)
 #0 15-23/1 * 5 * node /scripts/jd_party_night.js >> /scripts/logs/jd_party_night.log 2>&1
