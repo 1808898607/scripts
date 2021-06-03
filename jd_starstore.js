@@ -3,7 +3,7 @@
 更新时间：2021-06-02 08:53
 脚本说明：星店长，和去年一样，稍微改了改，后面的账户默认助力第一个
 活动进入方式：京东app搜索【星店长】
-cron "22 12,17,20 * * *" script-path=https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_lotteryMachine.js,tag=京东星店长
+cron "22 12,17,20 1-10 6 *" script-path=https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_lotteryMachine.js,tag=京东星店长
 5 9 * * * https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_starStore.js, tag=京东星店长, img-url=https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/image/jd.png, enabled=true
 */
 const $ = new Env('京东星店长');
