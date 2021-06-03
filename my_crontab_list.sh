@@ -145,6 +145,8 @@
 #龙猪猪红包雨
 4 0 * * * node /scripts/sj_jd_redrainlzz.js >> /scripts/logs/sj_jd_redrainlzz.log 2>&1
 4 0 * * * node /scripts/sj_jd_redrainme.js >> /scripts/logs/sj_jd_redrainlme.log 2>&1
+# .....................                                                                                                     
+13 0,9,18,22 * * * node /scripts/jd_jump.js >> /scripts/logs/jd_jump.log 2>&1 
 
 #3 0,23 * * * node /scripts/jd_tcl.js >> /scripts/logs/jd_tcl.log 2>&1
 #3 0,23 * * * node /scripts/jd_tcl.js >> /scripts/logs/jd_tcl.log 2>&1
