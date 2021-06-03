@@ -35,7 +35,7 @@
 0 0-23/3 * 6,7 * node /scripts/jd_mohe.js >> /scripts/logs/jd_mohe.log 2>&1
 
 #..................(5.31.........)
-#0 15-23/1 * 5 * node /scripts/jd_party_night.js >> /scripts/logs/jd_party_night.log 2>&1
+0 1,7,10 1-10 6 * node /scripts/jd_star_shop..js >> /scripts/logs/jd_star_shop..log 2>&1
 
 ##############长期活动##############
 # 签到
