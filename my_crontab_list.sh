@@ -16,9 +16,9 @@
 #每日抽奖(活动时间：2021-05-01至2021-05-31)
 9 0,22,23 * * * node /scripts/jd_daily_lottery.js >> /scripts/logs/jd_daily_lottery.log 2>&1
 
-38 6,12 * * * node /scripts/jd_carnivalcity.js >> /scripts/logs/jd_carnivalcity.log 2>&1
-9 2,9,18 * * * node /scripts/jd_carnivalcity.js >> /scripts/logs/jd_carnivalcity.log 2>&1
-1 0-23/8,23 * * * node /scripts/jd_city.js >> /scripts/logs/jd_city.log 2>&1
+38 6,12 * 6 * node /scripts/jd_carnivalcity.js >> /scripts/logs/jd_carnivalcity.log 2>&1
+9 2,9,18 * 6 * node /scripts/jd_carnivalcity.js >> /scripts/logs/jd_carnivalcity.log 2>&1
+1 0-23/8,23 5 6 * node /scripts/jd_city.js >> /scripts/logs/jd_city.log 2>&1
 23 0-23/1 * 6 * node /scripts/jd_zoo.js >> /scripts/logs/jd_zoo.log 2>&1
 12,40 * * 6 * node /scripts/jd_zooCollect.js >> /scripts/logs/jd_zooCollect.log 2>&1
 
@@ -35,7 +35,7 @@
 0 0-23/3 * 6,7 * node /scripts/jd_mohe.js >> /scripts/logs/jd_mohe.log 2>&1
 
 #..................(5.31.........)
-0 1,7,10 1-10 6 * node /scripts/jd_star_shop..js >> /scripts/logs/jd_star_shop..log 2>&1
+0 1,7,10 1-10 6 * node /scripts/jd_star_shop.js >> /scripts/logs/jd_star_shop.log 2>&1
 3 0,6,20 1-18 6 * node /scripts/jd_mcxhd.js >> /scripts/logs/jd_mcxhd.log 2>&1
 3 0,1,8 * * * node /scripts/jd_jxlhb.js >> /scripts/logs/jd_jxlhb.log 2>&1
 ##############长期活动##############
