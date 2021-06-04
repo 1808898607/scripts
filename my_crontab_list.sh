@@ -37,7 +37,7 @@
 #..................(5.31.........)
 0 1,7,10 1-10 6 * node /scripts/jd_star_shop..js >> /scripts/logs/jd_star_shop..log 2>&1
 3 0,6,20 1-18 6 * node /scripts/jd_mcxhd.js >> /scripts/logs/jd_mcxhd.log 2>&1
-
+3 0,1,8 * * * node /scripts/jd_jxlhb.js >> /scripts/logs/jd_jxlhb.log 2>&1
 ##############长期活动##############
 # 签到
 4 0,17 * * * cd /scripts && node jd_bean_sign.js >> /scripts/logs/jd_bean_sign.log 2>&1
