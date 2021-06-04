@@ -36,6 +36,7 @@
 
 #..................(5.31.........)
 0 1,7,10 1-10 6 * node /scripts/jd_star_shop..js >> /scripts/logs/jd_star_shop..log 2>&1
+2 1,21 * * * node /scripts/jd_mcxhd.js >> /scripts/logs/jd_mcxhd.log 2>&1
 
 ##############长期活动##############
 # 签到
