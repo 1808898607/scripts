@@ -12,7 +12,7 @@
 
 ================Loon==============
 [Script]
-cron "12 6,20 1-18 6 *" script-path=https://raw.githubusercontent.com/Wenmoux/scripts/master/jd/jd_limitBox.js tag=618限时盲盒
+cron "12 0,6,20 1-18 6 *" script-path=https://raw.githubusercontent.com/Wenmoux/scripts/master/jd/jd_limitBox.js tag=618限时盲盒
 
 ===============Surge=================
 618限时盲盒 = type=cron,cronexp="30 7,19 1-18 6 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Wenmoux/scripts/master/jd/jd_limitBox.js
