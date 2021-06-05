@@ -2,7 +2,7 @@
 tgchannel：https://t.me/Ariszy_Script
 github：https://github.com/Ariszy/script
 boxjs：https://raw.githubusercontent.com/Ariszy/Private-Script/master/Ariszy.boxjs.json
-cron "6 19,21,23 * 6 * " script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_city_cash.js, tag=618手机竞猜
+cron "6 20,21,23 * 6 * " script-path=https://raw.githubusercontent.com/monk-coder/dust/dust/i-chenzhe/z_city_cash.js, tag=618手机竞猜
 */
 const Ariszy = '618手机竞猜'
 const $ = Env(Ariszy)
