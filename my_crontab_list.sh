@@ -34,6 +34,7 @@
 #5G魔盒............(...............2021-06-2...2021-07-31)
 0 0-23/3 * 6,7 * node /scripts/jd_mohe.js >> /scripts/logs/jd_mohe.log 2>&1
 
+5 0-23/1 * 6 * node /scripts/jd_big_winner.js >> /scripts/logs/jd_big_winner.log 2>&1
 #..................(5.31.........)
 0 1,7,10 1-10 6 * node /scripts/jd_star_shop.js >> /scripts/logs/jd_star_shop.log 2>&1
 3 0,6,20 1-18 6 * node /scripts/jd_mcxhd.js >> /scripts/logs/jd_mcxhd.log 2>&1
