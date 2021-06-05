@@ -14,7 +14,7 @@ https://raw.githubusercontent.com/Wenmoux/scripts/master/jd/jd_618redpacket.js
 
 ================Loon==============
 [Script]
-cron "23 0-23/1 * 6 *" script-path=https://raw.githubusercontent.com/Wenmoux/scripts/master/jd/jd_618redpacket.js tag=翻翻乐
+cron "1 0-23/1 * 6 *" script-path=https://raw.githubusercontent.com/Wenmoux/scripts/master/jd/jd_618redpacket.js tag=翻翻乐
 
 ===============Surge=================
 翻翻乐 = type=cron,cronexp="1 0-23/1 * 6 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Wenmoux/scripts/master/jd/jd_618redpacket.js
