@@ -99,7 +99,7 @@ usergetGiftinfo = {}
 
 def getCookie():
     global cookies
-    ckfile = '/scripts/logscookies.list' #'JDCookies.txt'
+    ckfile = '/scripts/logs/cookies.list' #'JDCookies.txt'
     try:
         if os.path.exists(ckfile):
             cookies = ''
