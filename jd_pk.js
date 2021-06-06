@@ -3,25 +3,20 @@
 cron 15 0,6,13,19,21 * * * ddo_pk.js
 更新时间：2021-6-4
 活动入口：京东APP-我的-京享值
-Author:ddo
-
 已支持IOS双京东账号,Node.js支持N个京东账号
 脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
 ============Quantumultx===============
 [task_local]
 #京享值PK
 15 0,6,13,19,21 * * * https://raw.githubusercontent.com/hyzaw/scripts/main/ddo_pk.js, tag=京享值PK
-
 ================Loon==============
 [Script]
-cron "3 0,2,10,16,22 * * *" script-path=https://raw.githubusercontent.com/hyzaw/scripts/main/ddo_pk.js,tag=京享值PK
-
+cron "25 0,5,9,11,14,18,20 * * *" script-path=https://raw.githubusercontent.com/hyzaw/scripts/main/ddo_pk.js,tag=京享值PK
 ===============Surge=================
 京享值PK = type=cron,cronexp="15 0,6,13,19,21 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/hyzaw/scripts/main/ddo_pk.js
-
 ============小火箭=========
 京享值PK = type=cron,script-path=https://raw.githubusercontent.com/hyzaw/scripts/main/ddo_pk.js, cronexpr="15 0,6,13,19,21 * * *", timeout=3600, enable=true
- */
+*/
 const $ = new Env('京享值PK');
 $.toObj = (t, e = null) => {
 	try {
@@ -44,6 +39,7 @@ let cookiesArr = [],
 	cookie = "",
 	message;
 let minPrize = 1;
+let bcomplate = false;
 
 if ($.isNode()) {
 	Object.keys(jdCookieNode).forEach((item) => {
@@ -111,19 +107,12 @@ async function main() {
 		await submitPKCode($.pin)
 		console.log("我的京享值:"+myScore);
 		if($.pinList){
-			// for(let index=0;index<$.pinList.length;index++){
-			// 		let item=$.pinList[index];
-			// 		let pin=item.friendPin;
-			// 		await submitPKCode(pin)
-			// 		let fscore=await getScore(pin);
-			// 		console.log("别人的京享值:"+fscore);
-			// 		if(fscore<myScore){
-			// 			await launchBattle(pin);
-			// 			await receiveBattle(pin);
-			// 		}
-			// }
 			console.log($.pinList)
 			for(let i = 0; i < $.pinList.length ; i++){
+				if(bcomplate){
+					break;
+				}
+				else{
 					let pin = $.pinList[i];
 					console.log('别人的的pin：' + pin)
 					let fscore=await getScore(pin);
@@ -131,20 +120,13 @@ async function main() {
 					if(fscore<myScore){
 						await launchBattle(pin);
 						await receiveBattle(pin);
-					}
+					}					
+					
+				}
+		
 			}
+			bcomplate =false;
 		}
-		// if($.helpAuthor){
-		//     	let authScore=await getScore(authorPin);
-		//         console.log("爸爸的京享值:"+authScore);
-		//         if(authScore>myScore){//反向操作，嘻嘻嘻
-		//             console.log('帮爸爸挑战一次');
-		//             await launchBattle(authorPin);
-	  //           	await receiveBattle(authorPin);
-		//         }else{
-		//             console.log('淦，分比爸爸高，不挑战了');
-		//         }
-		// }
 
 		await getBoxRewardInfo();
 		console.log("去开宝箱");
@@ -165,7 +147,14 @@ function submitPKCode (pin) {
 	console.log(`上传pk码: ${pin}`);
 	return new Promise((resolve) => {
 		let options = {
-			"url": `https://pool.nz.lu/upload/PKv2/${pin}`,
+			"url": `https://pool.nz.lu/api/?type=upload&name=PK&code=${pin}`,
+			"headers": {
+				"Host": "pool.nz.lu",
+				"Connection": "keep-alive",
+				"Accept": " */*",
+				"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4433.0 Safari/537.36",
+				"Accept-Language": "zh-cn",
+			}
 		}
 
 		$.get(options, (err, resp, res) => {
@@ -186,7 +175,14 @@ function getPinList(num = 20){
 	console.log("获取Pk列表");
 	return new Promise((resolve) => {
 		let options = {
-			"url": `https://pool.nz.lu/get/PKv2/${num}`,
+			"url": `https://pool.nz.lu/api/?type=get&name=PK&count=${num}`,
+			"headers": {
+				"Host": "pool.nz.lu",
+				"Connection": "keep-alive",
+				"Accept": " */*",
+				"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4433.0 Safari/537.36",
+				"Accept-Language": "zh-cn",
+			}
 		}
 
 		$.get(options, (err, resp, res) => {
@@ -204,41 +200,6 @@ function getPinList(num = 20){
 	});
 }
 
-// function getPinList(){
-// 	console.log("获取Pk列表");
-// 	return new Promise((resolve) => {
-// 		let options = {
-// 			"url": "https://pengyougou.m.jd.com/like/jxz/getUserFriends?actId=8&appId=dafbe42d5bff9d82298e5230eb8c3f79&lkEPin="+$.pin,
-// 			"headers": {
-// 				"Host": "jdjoy.jd.com",
-// 				"Origin": "https://prodev.m.jd.com",
-// 				"Cookie": cookie,
-// 				"Connection": "keep-alive",
-// 				"Accept": "application/json, text/plain, */*",
-// 				"User-Agent": "jdapp;iPhone;9.5.4;13.6;db48e750b34fe9cd5254d970a409af316d8b5cf3;network/wifi;ADID/38EE562E-B8B2-7B58-DFF3-D5A3CED0683A;model/iPhone10,3;addressid/0;appBuild/167668;jdSupportDarkMode/0;Mozilla/5.0 (iPhone; CPU iPhone OS 13_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1",
-// 				"Accept-Language": "zh-cn",
-// 				"Referer": "https://prodev.m.jd.com/mall/active/4HTqMAvser7ctEBEdhK4yA7fXpPi/index.html?babelChannel=ttt9&tttparams=AeOIMwdeyJnTG5nIjoiMTE3LjAyOTE1NyIsImdMYXQiOiIyNS4wOTUyMDcifQ7%3D%3D&lng=00.000000&lat=00.000000&sid=&un_area="
-// 			}
-// 		}
-
-// 		$.get(options, (err, resp, res) => {
-// 			try {
-// 				console.log(res);
-// 				if (res) {
-// 					let data = $.toObj(res);
-// 					if (data.success) {
-// 						$.pinList = data.datas;
-// 					}
-
-// 				}
-// 			} catch (e) {
-// 				console.log(e);
-// 			} finally {
-// 				resolve(res);
-// 			}
-// 		})
-// 	});
-// }
 
 function launchBattle(fpin) {
 	console.log("发起挑战");
@@ -266,6 +227,9 @@ function launchBattle(fpin) {
 						data=data.data;
 						if(data.msg){
 						    console.log(data.msg);
+							if(data.msg =="今日次数已耗尽"){
+							bcomplate=true;
+							}
 						}else{
 						     console.log($.toStr(data));
 						}
@@ -304,7 +268,7 @@ function getScore(fpin){
 				if (res) {
 					let data = $.toObj(res);
 					if (data) {
-					    score = data.data
+					    score = data.data;
 					}
 				}
 			} catch (e) {
