@@ -72,12 +72,12 @@ readmes = """
 
 ################################ 【Main】################################
 import time, os, sys, datetime
-from requests import post, get, packages
+import requests
 import re, json, base64
 from urllib.parse import unquote, quote_plus
 
 # 定义一些要用到参数
-packages.urllib3.disable_warnings()
+requests.packages.urllib3.disable_warnings()
 scriptHeader = """
 
 ════════════════════════════════════════
@@ -99,7 +99,7 @@ usergetGiftinfo = {}
 
 def getCookie():
     global cookies
-    ckfile = '/scripts/logs/cookies.list' #'JDCookies.txt'
+    ckfile = '/scripts/logs/cookies.list'
     try:
         if os.path.exists(ckfile):
             cookies = ''
@@ -127,6 +127,11 @@ if "JD_COOKIE" in os.environ:
         cookies = os.environ["JD_COOKIE"]
         print("已获取并使用Env环境 Cookie")
 
+if "TG_BOT_TOKEN" in os.environ:
+        TG_BOT_TOKEN = os.environ["TG_BOT_TOKEN"]
+        TG_USER_ID = os.environ["TG_USER_ID"]
+        print("已获取并使用Env环境tgbot")
+        
 def message(str_msg):
     global message_info
     print(str_msg)
@@ -159,8 +164,8 @@ if BARK:
 def telegram_bot(title, content):
     try:
         print("\n")
-        bot_token = os.environ["TG_BOT_TOKEN"]#TG_BOT_TOKEN
-        user_id = os.environ["TG_USER_ID"]#TG_USER_ID
+        bot_token = TG_BOT_TOKEN
+        user_id = TG_USER_ID
         if not bot_token or not user_id:
             print("tg服务的bot_token或者user_id未设置!!\n取消推送")
             return
@@ -177,7 +182,7 @@ def telegram_bot(title, content):
             proxyStr = "http://{}:{}".format(TG_PROXY_IP, TG_PROXY_PORT)
             proxies = {"http": proxyStr, "https": proxyStr}
         try:
-            response = post(url=url, headers=headers, params=payload, proxies=proxies).json()
+            response = requests.post(url=url, headers=headers, params=payload, proxies=proxies).json()
         except:
             print('推送失败！')
         if response['ok']:
@@ -203,7 +208,7 @@ def pushplus_bot(title, content):
         }
         body = json.dumps(data).encode(encoding='utf-8')
         headers = {'Content-Type':'application/json'}
-        response = post(url=url, data=body, headers=headers).json()
+        response = requests.post(url=url, data=body, headers=headers).json()
         if response['code'] == 200:
             print('推送成功！')
         else:
@@ -218,7 +223,7 @@ def bark_push(title, content):
         return
     print("bark服务启动")
     try:
-        response = get('''https://api.day.app/{0}/{1}/{2}'''.format(BARK,title,quote_plus(content))).json()
+        response = requests.get('''https://api.day.app/{0}/{1}/{2}'''.format(BARK,title,quote_plus(content))).json()
         if response['code'] == 200:
             print('推送成功！')
         else:
@@ -304,7 +309,7 @@ def iscookie():
 
 def gettext(url):
     try:
-        resp = get(url, timeout=60).text
+        resp = requests.get(url, timeout=60).text
         if '该内容无法显示' in resp or '违规' in resp:
             return gettext(url)
         return resp
@@ -362,7 +367,7 @@ def getUserInfo(ck, pinName,userNum):
         'Accept-Language': 'zh-cn'
     }
     try:
-        resp = get(url=url, verify=False, headers=headers, timeout=60).text
+        resp = requests.get(url=url, verify=False, headers=headers, timeout=60).text
         r = re.compile(r'GetJDUserInfoUnion.*?\((.*?)\)')
         result = r.findall(resp)
         userInfo = json.loads(result[0])
@@ -427,7 +432,7 @@ def drawShopGift(cookie, data):
             'Referer': '',
             'Accept-Language': 'zh-Hans-CN;q=1'
         }
-        response = post(url, headers=headers, verify=False, data=body, timeout=60)
+        response = requests.post(url, headers=headers, verify=False, data=body, timeout=60)
         if 'isSuccess' in response.text:
             return response.json()
         else:
