@@ -4,7 +4,7 @@
 31 * * * * sh +x /scripts/docker/auto_help.sh collect >> /scripts/logs/auto_help_collect.log 2>&1
 
 #关注店铺
-7 9,17 * * * python3 /scripts/jd_getFollowGift.py  >> /scripts/logs/jd_getFollowGift.log 2>&1
+7 9,17 * * * python3 /scripts/jd_follow.py  >> /scripts/logs/jd_follow.log 2>&1
 ##############短期活动##############
 #女装盲盒 活动时间：2021-04-1到2021-04-31
 35 0,8,22 * * * node /scripts/jd_nzmh.js >> /scripts/logs/jd_nzmh.log 2>&1
