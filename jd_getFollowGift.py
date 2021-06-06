@@ -159,8 +159,8 @@ if BARK:
 def telegram_bot(title, content):
     try:
         print("\n")
-        bot_token = TG_BOT_TOKEN
-        user_id = TG_USER_ID
+        bot_token = os.environ["TG_BOT_TOKEN"]#TG_BOT_TOKEN
+        user_id = os.environ["TG_USER_ID"]#TG_USER_ID
         if not bot_token or not user_id:
             print("tg服务的bot_token或者user_id未设置!!\n取消推送")
             return
