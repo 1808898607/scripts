@@ -8,6 +8,7 @@ function sj(){
     rm -rf /acoolbook /scripts/sj_*
     git clone https://github.com/acoolbook/scripts.git /acoolbook
     cp /acoolbook/jddj_cookie.js /scripts/jddj_cookie.js
+    cp /acoolbook/jd_getFollowGift.py /scripts/jd_getFollowGift.py
     # 拷贝脚本
     for jsname in $(find /acoolbook -name "*.js" | grep -vE "\/backup\/"); do cp ${jsname} /scripts/sj_${jsname##*/}; done
     # 匹配js脚本中的cron设置定时任务
