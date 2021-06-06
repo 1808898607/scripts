@@ -11,9 +11,9 @@ cron 15 0,6,13,19,21 * * * ddo_pk.js
 15 0,6,13,19,21 * * * https://raw.githubusercontent.com/hyzaw/scripts/main/ddo_pk.js, tag=京享值PK
 ================Loon==============
 [Script]
-cron "25 0,5,9,11,14,18,20 * * *" script-path=https://raw.githubusercontent.com/hyzaw/scripts/main/ddo_pk.js,tag=京享值PK
+cron "25 0,5,9,11,14,18,20 1-18/1 6 *" script-path=https://raw.githubusercontent.com/hyzaw/scripts/main/ddo_pk.js,tag=京享值PK
 ===============Surge=================
-京享值PK = type=cron,cronexp="15 0,6,13,19,21 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/hyzaw/scripts/main/ddo_pk.js
+京享值PK = type=cron,cronexp="15 0,6,13,19,21 1-18/1 6 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/hyzaw/scripts/main/ddo_pk.js
 ============小火箭=========
 京享值PK = type=cron,script-path=https://raw.githubusercontent.com/hyzaw/scripts/main/ddo_pk.js, cronexpr="15 0,6,13,19,21 * * *", timeout=3600, enable=true
 */
