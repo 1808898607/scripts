@@ -2,7 +2,7 @@
 *
     Name: 京喜牧场
     Address: 京喜App -> 我的 -> 京喜牧场
-    Author: MoPoQAQ
+    Author: MoPoQAQ  https://github.com/moposmall/Script/blob/main/Me/jx_mc.js
     Created：2021/6/4 23:30
     Updated: 2021/6/7 22:30
     Thanks: 
