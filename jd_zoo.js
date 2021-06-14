@@ -8,7 +8,7 @@
 
 =====================Loon================
 [Script]
-cron "16 0,6-23/2 * * *" script-path=https://raw.githubusercontent.com/star261/jd/main/scripts/jd_zoo.js, tag=618动物联萌
+cron "36 0,6-23/2 * * *" script-path=https://raw.githubusercontent.com/star261/jd/main/scripts/jd_zoo.js, tag=618动物联萌
 
 ====================Surge================
 618动物联萌 = type=cron,cronexp="36 0,6-23/2 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/star261/jd/main/scripts/jd_zoo.js
@@ -81,11 +81,15 @@ if ($.isNode()) {
         }
     }
     let res = [], res2 = [], res3 = [];
-    //res3 = await getAuthorShareCode('https://raw.githubusercontent.com/gitupdate/updateTeam/master/shareCodes/jd_zoo.json');
-    //if (!res3) await getAuthorShareCode('https://cdn.jsdelivr.net/gh/gitupdate/updateTeam@master/shareCodes/jd_zoo.json')
-    res2 = await getAuthorShareCode('https://raw.githubusercontent.com/star261/jd/main/code/zoo.json');
+    //res = await getAuthorShareCode('https://raw.githubusercontent.com/star261/jd/main/code/zoo.json');
+    res2 = await getAuthorShareCode('https://cdn.jsdelivr.net/gh/gitupdate/updateTeam@master/shareCodes/jd_zoo.json');
+    res3 = await getAuthorShareCode('http://cdn.trueorfalse.top/e528ffae31d5407aac83b8c37a4c86bc/');
     if (pKHelpAuthorFlag) {
-        $.innerPkInviteList = getRandomArrayElements([...$.innerPkInviteList, ...res, ...res2, ...res3], [...$.innerPkInviteList, ...res, ...res2, ...res3].length);
+        if([...$.innerPkInviteList, ...res, ...res2, ...res3].length > 6){
+            $.innerPkInviteList = getRandomArrayElements([...$.innerPkInviteList, ...res, ...res2, ...res3],6);
+        }else{
+            $.innerPkInviteList = getRandomArrayElements([...$.innerPkInviteList, ...res, ...res2, ...res3], [...$.innerPkInviteList, ...res, ...res2, ...res3].length);
+        }
         $.pkInviteList.push(...$.innerPkInviteList);
     }
     for (let i = 0; i < cookiesArr.length; i++) {
