@@ -1,6 +1,6 @@
 /*
 618限时盲盒@wenmoux
-活动入口：签到领豆 618盲盒
+活动入口：签到领豆 6.18亿
 优先助力前面的号,如满了依次往后
 更新地址：https://raw.githubusercontent.com/Wenmoux/scripts/master/jd/jd_limitBox.js
 已支持IOS双京东账号, Node.js支持N个京东账号
@@ -12,7 +12,7 @@
 
 ================Loon==============
 [Script]
-cron "16 6,16,20 1-18 6 *" script-path=https://raw.githubusercontent.com/Wenmoux/scripts/master/jd/jd_limitBox.js tag=618限时盲盒
+cron "30 7,19 1-18 6 *" script-path=https://raw.githubusercontent.com/Wenmoux/scripts/master/jd/jd_limitBox.js tag=618限时盲盒
 
 ===============Surge=================
 618限时盲盒 = type=cron,cronexp="30 7,19 1-18 6 *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Wenmoux/scripts/master/jd/jd_limitBox.js
@@ -51,7 +51,7 @@ const JD_API_HOST = `https://api.m.jd.com/client.action`;
         return;
     }
 
-    for (let i = 0; i < cookiesArr.length; i++) {
+    for (let i = 0; i < cookiesArr.length ; i++) {
         cookie = cookiesArr[i];
         if (cookie) {
             $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
@@ -83,7 +83,7 @@ const JD_API_HOST = `https://api.m.jd.com/client.action`;
             await $.wait(1000);
         }
     }
-    for (let i = 0; i < cookiesArr.length; i++) {
+    for (let i = 0; i < cookiesArr.length ; i++) {
         cookie = cookiesArr[i];
         if (cookie) {
             $.index = i + 1;
@@ -96,7 +96,7 @@ const JD_API_HOST = `https://api.m.jd.com/client.action`;
                 if (status === "LB604" || status === "LB204") {
                     l = 999
                 } else if (status === "LB704") {
-                    //     codeList.splice(l--, 1)  //删除已满助力码             
+                        codeList.splice(l--, 1)  //删除已满助力码            
                 }
 
             }
@@ -165,7 +165,7 @@ function getcode() {
                         console.log(`${$.name} API请求失败，请检查网路重试`);
                     } else {
                         data = JSON.parse(data);
-                        console.log(data)
+                    //    console.log(data)
                         if (data.errorCode) {
                             resolve(data.errorCode)
                             console.log(data.errorMessage)
