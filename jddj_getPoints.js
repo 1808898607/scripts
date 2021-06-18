@@ -1,20 +1,31 @@
+
 //京东到家鲜豆庄园收水滴脚本,支持qx,loon,shadowrocket,surge,nodejs
 //用抓包抓 https://daojia.jd.com/html/index.html 页面cookie填写到下面,暂时不知cookie有效期
 //抓多账号直接清除浏览器缓存再登录新账号,千万别点退出登录,否则cookie失效
 //cookie只要里面的deviceid_pdj_jd=xxx-xxx-xxx;o2o_m_h5_sid=xxx-xxx-xxx关键信息
 //五分钟运行一次
 //boxjs订阅地址:https://gitee.com/passerby-b/javascript/raw/master/JD/passerby-b.boxjs.json
-//  cron "8-55/9 * * * *" script-path=https://github.com/717785320/JDDJ/blob/main/jddj_getPoints.js
+//TG群:https://t.me/passerbyb2021
+
+//[task_local]
+//*/5 * * * * https://raw.githubusercontent.com/passerby-b/JDDJ/main/jddj_getPoints.js
+
+
+//[Script]
+//cron "*/5 * * * *" script-path=https://raw.githubusercontent.com/passerby-b/JDDJ/main/jddj_getPoints.js,tag=京东到家鲜豆庄园收水滴
+
 
 const $ = new API("jddj_getPoints");
-let ckPath = './jddj_cookie.js';//ck路径,环境变量:JDDJ_CKPATH
+let ckPath = './jdCookie.js';//ck路径,环境变量:JDDJ_CKPATH
 let cookies = [];
 let thiscookie = '', deviceid = '', nickname = '';
 !(async () => {
     if (cookies.length == 0) {
         if ($.env.isNode) {
             if (process.env.JDDJ_CKPATH) ckPath = process.env.JDDJ_CKPATH;
-            delete require.cache[ckPath]; cookies = require(ckPath);
+            delete require.cache[ckPath];
+            let jdcookies = require(ckPath);
+            for (let key in jdcookies) cookies.push(jdcookies[key]);
         }
         else {
             let ckstr = $.read('#jddj_cookies');
@@ -36,14 +47,16 @@ let thiscookie = '', deviceid = '', nickname = '';
         thiscookie = cookies[i];
         if (!thiscookie.trim()) continue;
 
-        var jsonlist = {};
-        var params = thiscookie.split(';');
-        params.forEach(item => {
-            if (item.indexOf('=') > -1) {
-                jsonlist[item.split('=')[0].trim()] = item.split('=')[1].trim();
+        deviceid = _uuid();
+        let option = taskLoginUrl(deviceid, thiscookie);
+        await $.http.get(option).then(response => {
+            let data = JSON.parse(response.body);
+            if (data.code == 0) {
+                thiscookie = 'deviceid_pdj_jd=' + deviceid + '; PDJ_H5_PIN=' + data.result.PDJ_H5_PIN + '; o2o_m_h5_sid=' + data.result.o2o_m_h5_sid + ';';
+                //sid = data.result.o2o_m_h5_sid;
             }
+            else thiscookie = 'aabbcc';
         });
-        deviceid = jsonlist.deviceid_pdj_jd;
 
         await userinfo();
         await $.wait(1000);
@@ -158,6 +171,26 @@ function urlTask(url, body) {
         body: body
     };
     return option;
+}
+
+function taskLoginUrl(deviceid, thiscookie) {
+    return {
+        url: 'https://daojia.jd.com/client?_jdRandom=' + (+new Date()) + '&functionId=xapp/loginByPtKeyNew&body=' + escape(JSON.stringify({ "fromSource": 5, "businessChannel": 150, "subChannel": "", "regChannel": "" })) + 'channel=ios&platform=6.6.0&platCode=h5&appVersion=6.6.0&appName=paidaojia&deviceModel=appmodel&code=011UYn000apwmL1nWB000aGiv74UYn03&deviceId=' + deviceid + '&deviceToken=' + deviceid + '&deviceModel=appmodel',
+        headers: {
+            "Cookie": 'deviceid_pdj_jd=' + deviceid + ';' + thiscookie + ';',
+            "Host": "daojia.jd.com",
+            "referer": "https://daojia.jd.com/taroh5/h5dist/",
+            'Content-Type': 'application/x-www-form-urlencoded',
+            "User-Agent": 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko)'
+        }
+    }
+}
+
+function _uuid() {
+    function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+    }
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 }
 
 /*********************************** API *************************************/
