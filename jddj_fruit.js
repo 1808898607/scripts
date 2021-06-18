@@ -1,17 +1,20 @@
-/*京东到家果园任务脚本,支持qx,loon,shadowrocket,surge,nodejs
-//用抓包抓 https://daojia.jd.com/html/index.html 页面cookie填写到下面,暂时不知cookie有效期
-//抓多账号直接清除浏览器缓存再登录新账号,千万别点退出登录,否则cookie失效
-//cookie只要里面的deviceid_pdj_jd=xxx-xxx-xxx;o2o_m_h5_sid=xxx-xxx-xxx关键信息
-//8,11,16整点各运行一次
-//boxjs订阅地址:https://gitee.com/passerby-b/javascript/raw/master/JD/passerby-b.boxjs.json
+/*
+v5.4
+京东到家果园任务脚本,支持qx,loon,shadowrocket,surge,nodejs
+兼容京东jdCookie.js
+手机设备在boxjs里填写cookie
+boxjs订阅地址:https://gitee.com/passerby-b/javascript/raw/master/JD/passerby-b.boxjs.json
+
+[task_local]
+10 0,3,8,11,17 * * * https://raw.githubusercontent.com/passerby-b/JDDJ/main/jddj_fruit.js
 
 [Script]
-cron "2 0,8,11,17 * * *" script-path=https://raw.githubusercontent.com/passerby-b/JDDJ/main/jddj_fruit.js,tag=京东到家果园任务
+cron "10 0,3,8,11,17 * * *" script-path=https://raw.githubusercontent.com/passerby-b/JDDJ/main/jddj_fruit.js,tag=京东到家果园任务
+
 */
 
 let isNotify = true;//是否通知,仅限nodejs
-let ckPath = './jddj_cookie.js';//ck路径,环境变量:JDDJ_CKPATH
-let shareCodes = '';//助力码,环境变量名:JDDJ_SHARECODES,示例:code1,code2
+let ckPath = './jdCookie.js';//ck路径,环境变量:JDDJ_CKPATH
 
 const $ = new API("jddj_fruit");
 try {
