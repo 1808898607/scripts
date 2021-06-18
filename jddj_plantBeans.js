@@ -6,15 +6,18 @@ cookie只要里面的deviceid_pdj_jd=xxx-xxx-xxx;o2o_m_h5_sid=xxx-xxx-xxx关键�
 一天运行一次
 boxjs订阅地址:https://gitee.com/passerby-b/javascript/raw/master/JD/passerby-b.boxjs.json
 TG群:https://t.me/passerbyb2021
+
 [task_local]
-0 0 * * * https://raw.githubusercontent.com/passerby-b/JDDJ/main/jddj_plantBeans.js
-================Loon==============
+10 0 * * * https://raw.githubusercontent.com/passerby-b/JDDJ/main/jddj_plantBeans.js
+
 [Script]
-cron "17 0,7,18 * * *" script-path=https://raw.githubusercontent.com/passerby-b/JDDJ/main/jddj_plantBeans.js,tag=京东到家鲜豆庄园
+cron "10 0 * * *" script-path=https://raw.githubusercontent.com/passerby-b/JDDJ/main/jddj_plantBeans.js,tag=京东到家鲜豆庄园
+
 */
 
 const $ = new API("jddj_plantBeans");
-let ckPath = './jddj_cookie.js';//ck路径,环境变量:JDDJ_CKPATH
+let ckPath = './jdCookie.js';//ck路径,环境变量:JDDJ_CKPATH
+
 let cookies = [];
 let thiscookie = '', deviceid = '';
 let lat = '30.' + Math.round(Math.random() * (99999 - 10000) + 10000);
@@ -24,7 +27,8 @@ let cityid = Math.round(Math.random() * (1500 - 1000) + 1000);
     if (cookies.length == 0) {
         if ($.env.isNode) {
             if (process.env.JDDJ_CKPATH) ckPath = process.env.JDDJ_CKPATH;
-            delete require.cache[ckPath]; cookies = require(ckPath);
+            let jdcookies = require(ckPath);
+            for (let key in jdcookies) cookies.push(jdcookies[key]);
         }
         else {
             let ckstr = $.read('#jddj_cookies');
@@ -41,26 +45,29 @@ let cityid = Math.round(Math.random() * (1500 - 1000) + 1000);
         console.log(`\r\n请先填写cookie`);
         return;
     }
+
     for (let i = 0; i < cookies.length; i++) {
         console.log(`\r\n★★★★★开始执行第${i + 1}个账号,共${cookies.length}个账号★★★★★`);
         thiscookie = cookies[i];
         if (!thiscookie.trim()) continue;
 
-        var jsonlist = {};
-        var params = thiscookie.split(';');
-        params.forEach(item => {
-            if (item.indexOf('=') > -1) {
-                jsonlist[item.split('=')[0].trim()] = item.split('=')[1].trim();
+        deviceid = _uuid();
+        let option = taskLoginUrl(deviceid, thiscookie);
+        await $.http.get(option).then(response => {
+            let data = JSON.parse(response.body);
+            if (data.code == 0) {
+                thiscookie = 'deviceid_pdj_jd=' + deviceid + '; PDJ_H5_PIN=' + data.result.PDJ_H5_PIN + '; o2o_m_h5_sid=' + data.result.o2o_m_h5_sid + ';';
+                //sid = data.result.o2o_m_h5_sid;
             }
+            else thiscookie = 'aabbcc';
         });
-        deviceid = jsonlist.deviceid_pdj_jd;
 
         await userinfo();
         await $.wait(1000);
 
         let tslist = await taskList();
         if (tslist.code == 1) {
-            $.notify('第' + (i + 1) + '个账号cookie过期', '请访问https://daojia.jd.com/html/index.html抓取cookie', { url: 'https://daojia.jd.com/html/index.html' });
+            $.notify('第' + (i + 1) + '个账号cookie过期', '请访问\nhttps://bean.m.jd.com/bean/signIndex.action抓取cookie', { url: 'https://bean.m.jd.com/bean/signIndex.action' });
             continue;
         }
 
@@ -296,6 +303,26 @@ function urlTask(url, body) {
         body: body
     };
     return option;
+}
+
+function taskLoginUrl(deviceid, thiscookie) {
+    return {
+        url: 'https://daojia.jd.com/client?_jdRandom=' + (+new Date()) + '&functionId=xapp/loginByPtKeyNew&body=' + escape(JSON.stringify({ "fromSource": 5, "businessChannel": 150, "subChannel": "", "regChannel": "" })) + 'channel=ios&platform=6.6.0&platCode=h5&appVersion=6.6.0&appName=paidaojia&deviceModel=appmodel&code=011UYn000apwmL1nWB000aGiv74UYn03&deviceId=' + deviceid + '&deviceToken=' + deviceid + '&deviceModel=appmodel',
+        headers: {
+            "Cookie": 'deviceid_pdj_jd=' + deviceid + ';' + thiscookie + ';',
+            "Host": "daojia.jd.com",
+            "referer": "https://daojia.jd.com/taroh5/h5dist/",
+            'Content-Type': 'application/x-www-form-urlencoded',
+            "User-Agent": 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko)'
+        }
+    }
+}
+
+function _uuid() {
+    function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+    }
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 }
 
 /*********************************** API *************************************/
