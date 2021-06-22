@@ -123,7 +123,7 @@ def getCookie():
 getCookie()
 #  取ENV环境Ck 设置方法：export JD_COOKIE="你的ck"（多账号&分隔）
 if "JD_COOKIE" in os.environ:
-    if len(os.environ["JD_COOKIE"]) > 100000:
+    if len(os.environ["JD_COOKIE"]) > 10:
         cookies = os.environ["JD_COOKIE"]
         print("已获取并使用Env环境 Cookie")
 
