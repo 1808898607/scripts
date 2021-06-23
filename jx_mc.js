@@ -1,6 +1,5 @@
 /*
-惊喜牧场
-https://raw.githubusercontent.com/star261/jd/main/scripts/jd_jxmc.js
+惊喜牧场https://raw.githubusercontent.com/star261/jd/main/scripts/jd_jxmc.js
 */
 // prettier-ignore
 !function (t, r) { "object" == typeof exports ? module.exports = exports = r() : "function" == typeof define && define.amd ? define([], r) : t.CryptoJS = r() }(this, function () {
@@ -61,8 +60,8 @@ if ($.isNode()) {
   }
   console.log('\n##################开始账号内互助#################\n');
   let newCookiesArr = [];
-  for(let i = 0;i<$.helpCkList.length;i+=5){
-    newCookiesArr.push($.helpCkList.slice(i,i+5))
+  for(let i = 0;i<$.helpCkList.length;i+=4){
+    newCookiesArr.push($.helpCkList.slice(i,i+4))
   }
   for (let i = 0; i < newCookiesArr.length; i++) {
     let thisCookiesArr = newCookiesArr[i];
@@ -430,7 +429,13 @@ function dealReturn(type, data) {
       }
       break;
     case 'feed':
-      data = JSON.parse(data.match(new RegExp(/jsonpCBK.?\((.*);*/))[1]);
+      try {
+        data = JSON.parse(data.match(new RegExp(/jsonpCBK.?\((.*);*/))[1]);
+      }catch (e) {
+        console.log(`投喂失败`);
+        console.log(data);
+        $.runFeed = false;
+      }
       if (data.ret === 0) {
         console.log(`投喂成功`);
       } else if (data.ret === 2020) {
