@@ -5,14 +5,14 @@ dir_shell=/ql/shell
 . $dir_shell/share.sh
 
 env_name=(
+  JXNC_SHARECODES
+  JDZZ_SHARECODES
   FRUITSHARECODES
   PETSHARECODES
   PLANT_BEAN_SHARECODES
   DREAM_FACTORY_SHARE_CODES
   DDFACTORY_SHARECODES
-  JDZZ_SHARECODES
   JDJOY_SHARECODES
-  JXNC_SHARECODES
   BOOKSHOP_SHARECODES
   JD_CASH_SHARECODES
   JDSGMH_SHARECODES
@@ -20,14 +20,14 @@ env_name=(
   JDHEALTH_SHARECODES
 )
 var_name=(
+  ForOtherJxnc
+  ForOtherJdzz
   ForOtherFruit
   ForOtherPet
   ForOtherBean
   ForOtherDreamFactory
   ForOtherJdFactory
-  ForOtherJdzz
   ForOtherJoy
-  ForOtherJxnc
   ForOtherBookShop
   ForOtherCash
   ForOtherSgmh
@@ -36,14 +36,14 @@ var_name=(
 )
 
 name_js=(
+  acoolbook_lxkwz_jd_jxnc
+  acoolbook_lxkwz_jd_jdzz
   acoolbook_lxkwz_jd_fruit
   acoolbook_lxkwz_jd_pet
   acoolbook_lxkwz_jd_plantBean
   acoolbook_lxkwz_jd_dreamFactory
   acoolbook_lxkwz_jd_jdfactory
-  acoolbook_lxkwz_jd_jdzz
   acoolbook_lxkwz_jd_crazy_joy
-  acoolbook_lxkwz_jd_jxnc
   acoolbook_lxkwz_jd_bookshop
   acoolbook_lxkwz_jd_cash
   acoolbook_lxkwz_jd_sgmh
@@ -52,14 +52,14 @@ name_js=(
 )
 
 name_config=(
+  Jxnc
+  Jdzz
   Fruit
   Pet
   Bean
   DreamFactory
   JdFactory
-  Jdzz
   Joy
-  Jxnc
   BookShop
   Cash
   Sgmh
@@ -68,14 +68,14 @@ name_config=(
 )
 
 name_chinese=(
+  京喜农场
+  京东赚赚
   东东农场
   东东萌宠
   京东种豆得豆
   京喜工厂
   东东工厂
-  京东赚赚
   crazyJoy任务
-  京喜农场
   口袋书店
   签到领现金
   闪购盲盒
